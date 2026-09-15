@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DuduPhudu · Omarchy plugins, apps and tools</title>
+<meta name="description" content="Omarchy plugins, desktop apps and tools by DuduPhudu: face unlock, a Telegram client in your bar, a system cockpit, touchpad tuning and more. Free and open on GitHub.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="DuduPhudu · Omarchy plugins, apps and tools">
+<meta property="og:description" content="Face unlock, a Telegram client in your bar, a system cockpit, touchpad tuning and more. Free and open on GitHub.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316191D'/%3E%3Ctext x='32' y='43' font-family='Arial, sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23F2B441'%3EDP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+  :root {
+    --ground: #F2F3F0;
+    --surface: #FBFBF9;
+    --ink: #16191D;
+    --muted: #596069;
+    --rule: #D5D9D5;
+    --chip: #E6E9E5;
+    --accent: #9A5600;
+    --ok: #2D7A4B;
+    --bad: #B42318;
+    --tint: color-mix(in oklab, var(--accent) 10%, var(--surface));
+    --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0F1215;
+      --surface: #161A1E;
+      --ink: #E6E9E5;
+      --muted: #9AA2AA;
+      --rule: #2A3036;
+      --chip: #1F242A;
+      --accent: #F2B441;
+      --ok: #5CC08A;
+      --bad: #F0877D;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0F1215;
+    --surface: #161A1E;
+    --ink: #E6E9E5;
+    --muted: #9AA2AA;
+    --rule: #2A3036;
+    --chip: #1F242A;
+    --accent: #F2B441;
+    --ok: #5CC08A;
+    --bad: #F0877D;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 16px/1.62 var(--body);
+    padding-inline: 20px;
+    padding-block: 0 64px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 1120px; margin: 0 auto; }
+  p { margin: 0 0 12px; max-width: 68ch; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  code { font-family: var(--mono); font-size: .86em; background: var(--chip); padding: .06em .34em; border-radius: 4px; overflow-wrap: anywhere; }
+  img { max-width: 100%; display: block; }
+  .defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+  .eyebrow, .label {
+    font: 500 12px/1.4 var(--mono);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+  .two { color: var(--accent); }
+
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-block: 18px; border-bottom: 1px solid var(--rule); }
+  .brand { font: 650 1.25rem/1 var(--display); letter-spacing: -.01em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 6px 20px; font: 13px/1.5 var(--mono); }
+  .nav-links a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; }
+  .nav-links a:hover { color: var(--accent); border-color: currentColor; }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 64px 32px; align-items: center; }
+  @media (min-width: 900px) { .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); } }
+  h1 {
+    font-family: var(--display);
+    font-weight: 650;
+    font-variation-settings: "opsz" 96;
+    font-size: clamp(3rem, 8.4vw, 6rem);
+    line-height: .96;
+    letter-spacing: -.037em;
+    margin: 14px 0 20px;
+  }
+  .lede { font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.5; max-width: 38ch; margin: 0; }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .button { display: inline-flex; align-items: center; padding: 11px 18px; border-radius: 999px; font: 500 .95rem/1 var(--body); text-decoration: none; border: 1px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; }
+  .button.primary { background: var(--ink); color: var(--ground); }
+  .button:hover { border-color: var(--accent); }
+  .button.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--ground); }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; }
+  .facts li { font: 500 12px/1 var(--mono); letter-spacing: .03em; padding: 7px 11px; border-radius: 999px; background: var(--chip); }
+
+  /* Three real preview cards, fanned. The one bold move on the page. */
+  .fan { position: relative; aspect-ratio: 16 / 12; max-width: 560px; width: 100%; margin-inline: auto; }
+  .fan img { position: absolute; width: 78%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; border: 1px solid var(--rule); box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .45); transition: transform .35s ease; }
+  .fan img:nth-child(1) { left: 0; top: 4%; transform: rotate(-6deg); }
+  .fan img:nth-child(2) { right: 0; top: 18%; transform: rotate(5deg); }
+  .fan img:nth-child(3) { left: 11%; bottom: 0; transform: rotate(-1.5deg); }
+  .fan:hover img:nth-child(1) { transform: rotate(-8deg) translate(-6px, -4px); }
+  .fan:hover img:nth-child(2) { transform: rotate(7deg) translate(6px, -2px); }
+  @media (prefers-reduced-motion: reduce) { .fan img { transition: none; } }
+
+  section { padding-block: 64px 4px; }
+  .kicker { margin-bottom: 10px; }
+  h2 {
+    font-family: var(--display);
+    font-weight: 620;
+    font-variation-settings: "opsz" 48;
+    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+    line-height: 1.08;
+    letter-spacing: -.02em;
+    margin: 0 0 14px;
+    max-width: 26ch;
+    text-wrap: balance;
+  }
+  h3 { font: 600 1.06rem/1.35 var(--body); margin: 0 0 6px; text-wrap: balance; }
+  .intro { color: var(--muted); max-width: 64ch; }
+
+  .featured { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 22px; padding: 28px; border-radius: 14px; background: var(--tint); border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--rule)); }
+  @media (min-width: 820px) { .featured { grid-template-columns: 200px minmax(0, 1fr); } }
+  .featured svg { width: 176px; height: 176px; color: var(--accent); margin-inline: auto; }
+  .featured h3 { font: 650 clamp(1.6rem, 3vw, 2.1rem)/1.05 var(--display); letter-spacing: -.02em; margin-bottom: 10px; }
+  .featured ul { margin: 10px 0 18px; padding-left: 1.1em; max-width: 66ch; }
+  .featured li { margin: 5px 0; }
+  .breathe { transform-box: view-box; transform-origin: 60px 60px; animation: breathe 1.8s ease-in-out infinite; }
+  @keyframes breathe { 50% { transform: scale(.9); } }
+  @media (prefers-reduced-motion: reduce) { .breathe { animation: none; } }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; margin-top: 22px; }
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
+  .card img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 1px solid var(--rule); background: #1a1714; }
+  /* PenguID has no preview image yet: a drawn card in the same dark, warm style as the others. */
+  .card-art { aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: space-between; gap: 6%; padding: 0 9%; border-bottom: 1px solid var(--rule); background: radial-gradient(120% 95% at 78% 18%, #3b2531 0%, #231a1c 45%, #17130f 100%); }
+  .card-art .art-name { font: 650 clamp(1.7rem, 3.2vw, 2.3rem)/1 var(--display); letter-spacing: -.025em; color: #F4EFE6; }
+  .card-art .art-name span { color: #F2B441; }
+  .card-art svg { width: 36%; height: auto; color: #F2B441; }
+  .card-body { padding: 16px 18px 18px; display: grid; gap: 10px; align-content: start; }
+  .card-body p { margin: 0; font-size: .94rem; }
+  .card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .badge { display: inline-block; font: 500 10.5px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+  .badge.listed { color: var(--ok); }
+  .badge.review { color: var(--muted); }
+  .badge.new { color: var(--accent); }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-top: 4px; font-size: .9rem; }
+  .copy { font: 500 12px/1 var(--mono); padding: 7px 10px; border-radius: 999px; border: 1px solid var(--rule); background: var(--chip); color: var(--ink); cursor: pointer; }
+  .copy:hover { border-color: var(--accent); }
+
+  .groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 8px 40px; margin-top: 18px; }
+  .group h3 { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 18px 0 4px; }
+  .tool { padding: 12px 0; border-top: 1px solid var(--rule); }
+  .tool a { font-weight: 600; text-decoration: none; color: var(--ink); }
+  .tool a:hover { color: var(--accent); }
+  .tool p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
+
+  .support { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 22px; padding: 28px; border-radius: 14px; border: 1px solid var(--rule); background: var(--surface); }
+  @media (min-width: 760px) { .support { grid-template-columns: minmax(0, 1fr) 200px; } }
+  .qr { background: #FFFDF7; border-radius: 12px; padding: 12px; width: 200px; max-width: 100%; justify-self: center; }
+  .qr img { width: 100%; height: auto; }
+
+  .foot { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .88rem; display: grid; gap: 8px; }
+  .foot p { max-width: 96ch; margin: 0; }
+</style>
+</head>
+<body>
+
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="fu-frame">
+      <path d="M8 34V22Q8 8 22 8H34"/>
+      <path d="M86 8H98Q112 8 112 22V34"/>
+      <path d="M112 86V98Q112 112 98 112H86"/>
+      <path d="M34 112H22Q8 112 8 98V86"/>
+    </g>
+    <g id="fu-body" transform="translate(60 62) scale(.9) translate(-60 -62)">
+      <path d="M60 24C70 24 77 31 77 42C77 52 84 64 84 76C84 88 73 94 60 94C47 94 36 88 36 76C36 64 43 52 43 42C43 31 50 24 60 24Z"/>
+      <path d="M50 56C45 65 45 79 51 85C55 89 65 89 69 85C75 79 75 65 70 56"/>
+    </g>
+    <g id="fu-eyes" transform="translate(60 62) scale(.9) translate(-60 -62)">
+      <path d="M53 35V40"/>
+      <path d="M67 35V40"/>
+    </g>
+    <g id="fu-beak" transform="translate(60 62) scale(.9) translate(-60 -62)">
+      <path d="M55 46L60 50.5L65 46"/>
+    </g>
+    <g id="fu-feet" transform="translate(60 62) scale(.9) translate(-60 -62)">
+      <path d="M48 100H56"/>
+      <path d="M64 100H72"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="page">
+
+<header class="nav">
+  <a class="brand" href="#top">Dudu<span class="two">Phudu</span></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#penguid">PenguID</a>
+    <a href="#plugins">Omarchy plugins</a>
+    <a href="#tools">Tools</a>
+    <a href="#support">Support</a>
+    <a href="https://github.com/ReidenXerx">GitHub</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<div class="hero">
+  <div>
+    <p class="eyebrow">Omarchy plugins · desktop apps · tools</p>
+    <h1>Dudu<span class="two">Phudu</span></h1>
+    <p class="lede">I build the pieces that make a Linux desktop feel finished: face unlock, a Telegram client in the bar, a cockpit for everything running, and more. All free, all on GitHub.</p>
+    <div class="cta">
+      <a class="button primary" href="#plugins">See the plugins</a>
+      <a class="button" href="#support">Support my work</a>
+    </div>
+    <ul class="facts" aria-label="At a glance">
+      <li>12 Omarchy plugins</li>
+      <li>8 on the Omarchy marketplace</li>
+      <li>Open source</li>
+    </ul>
+  </div>
+  <div class="fan" aria-hidden="true">
+    <img src="assets/previews/omagram.webp" alt="" width="720" height="405">
+    <img src="assets/previews/cockpit.webp" alt="" width="720" height="405">
+    <img src="assets/previews/tactile.webp" alt="" width="720" height="405">
+  </div>
+</div>
+
+<section id="penguid" aria-labelledby="penguid-h">
+  <p class="eyebrow kicker">New</p>
+  <h2 id="penguid-h">Face unlock for Omarchy</h2>
+  <div class="featured">
+    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <use class="breathe" href="#fu-frame" stroke-width="6"/>
+      <use href="#fu-body" stroke-width="5"/>
+      <use href="#fu-eyes" stroke-width="5.6"/>
+      <use href="#fu-beak" stroke-width="5"/>
+      <use href="#fu-feet" stroke-width="5"/>
+    </svg>
+    <div>
+      <h3>Pengu<span class="two">ID</span></h3>
+      <p>Look at your laptop and you're in. The infrared camera recognizes you on the lock screen, at sudo and in polkit prompts, and a small penguin above every window shows what it is doing, the way Face ID does on an iPhone.</p>
+      <ul>
+        <li>Face data stays on the laptop, encrypted under a key sealed by the TPM.</li>
+        <li>Face ID-style password rules: after boot, every 48 hours, and after 5 refused faces.</li>
+        <li>Nothing scans until you press Enter at a prompt.</li>
+      </ul>
+      <div class="actions">
+        <a class="button primary" href="/omarchy-penguid/">Discover PenguID</a>
+        <a href="https://github.com/ReidenXerx/omarchy-penguid">Source on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plugins" aria-labelledby="plugins-h">
+  <p class="eyebrow kicker">Omarchy plugins</p>
+  <h2 id="plugins-h">Small tools that change how the desktop feels</h2>
+  <p class="intro">Each one does something Omarchy doesn't out of the box, installs with one command, and removes cleanly.</p>
+  <div class="grid">
+
+    <article class="card">
+      <div class="card-art" aria-hidden="true">
+        <span class="art-name">Pengu<span>ID</span></span>
+        <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <use class="breathe" href="#fu-frame" stroke-width="6"/>
+          <use href="#fu-body" stroke-width="5"/>
+          <use href="#fu-eyes" stroke-width="5.6"/>
+          <use href="#fu-beak" stroke-width="5"/>
+          <use href="#fu-feet" stroke-width="5"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><h3>PenguID</h3><span class="badge new">New</span></div>
+        <p>Face unlock with the infrared camera on the lock screen, at sudo and in polkit prompts, with TPM-sealed face data and a penguin above every window that shows each step.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-penguid.git --enable">Copy install</button>
+          <a href="/omarchy-penguid/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-penguid">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/omagram.webp" alt="Omagram preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Omagram</h3><span class="badge review">In review</span></div>
+        <p>An unofficial Telegram client that lives in your desktop. Reply from the bar with voice, round video or stickers, and know who wrote by a sound of their own.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-omagram.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-omagram">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/cockpit.webp" alt="Cockpit preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Cockpit</h3><span class="badge listed">Marketplace</span></div>
+        <p>One hub for what the machine is doing right now: AI sessions working or waiting for you, transfers with real progress, long jobs, dirty repos and pending updates.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-cockpit.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-cockpit">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/tactile.webp" alt="Tactile preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Tactile</h3><span class="badge review">In review</span></div>
+        <p>Tune your touchpad and mouse by feel: changes undo themselves unless you keep them, custom acceleration curves, gestures with a finger map, per-app settings and a live finger view.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-tactile.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-tactile">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/barber.webp" alt="Barber preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Barber</h3><span class="badge review">In review</span></div>
+        <p>Edit the bar right on the bar: take widgets off, add, move and set them up in place, with undo and layouts that switch by themselves.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-barber.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-barber">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/emoji-picker.webp" alt="Emoji picker preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Emoji picker</h3><span class="badge listed">Marketplace</span></div>
+        <p>Emoji, symbols, kaomoji and GIFs typed straight into the app you were using. It searches English, Ukrainian and Russian names at once.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-emoji-picker.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-emoji-picker">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/clipboard-shelf.webp" alt="Clipboard shelf preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Clipboard shelf</h3><span class="badge listed">Marketplace</span></div>
+        <p>Pin the snippets you paste all day and keep them one keystroke away, next to your clipboard history.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-clipboard-shelf.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-clipboard-shelf">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/omalang.webp" alt="Omalang preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Omalang</h3><span class="badge listed">Marketplace</span></div>
+        <p>Remembers the keyboard layout for each app and restores it when you switch back. Left-click cycles, right-click assigns.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-omalang.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-omalang">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/tile-blueprints.webp" alt="Tile blueprints preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Tile blueprints</h3><span class="badge listed">Marketplace</span></div>
+        <p>Draw a tiling layout for each workspace, and apps open straight into their tile. A hand-arranged workspace becomes a blueprint in one key.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-tile-blueprints.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-tile-blueprints">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/idle-dim.webp" alt="Idle dim preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Idle dim</h3><span class="badge listed">Marketplace</span></div>
+        <p>Dims the screen after a while without input and brings your brightness back on the next key: the step Omarchy's idle handling skips.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-idle-dim.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-idle-dim">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/keyboard-cleaner.webp" alt="Keyboard cleaner preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Keyboard cleaner</h3><span class="badge listed">Marketplace</span></div>
+        <p>Switch every key off while you wipe your keyboard and touchpad. A themed card counts down; hold a click on the ring to finish early.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-keyboard-cleaner.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-keyboard-cleaner">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/previews/dgpu-status.webp" alt="dGPU status preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>dGPU status</h3><span class="badge listed">Marketplace</span></div>
+        <p>Is the NVIDIA GPU asleep or awake? A bar widget that tells you at a glance, with gpuwho to see what is keeping it up.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-dgpu-status.git --enable">Copy install</button>
+          <a href="https://github.com/ReidenXerx/omarchy-dgpu-status">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="tools" aria-labelledby="tools-h">
+  <p class="eyebrow kicker">Tools and apps</p>
+  <h2 id="tools-h">Beyond the desktop</h2>
+  <div class="groups">
+    <div class="group">
+      <h3>AI and developer tools</h3>
+      <div class="tool"><a href="https://github.com/ReidenXerx/bearing">bearing</a><p>An intel layer for AI coding agents that keeps evidence, so an agent can't quietly drift from what the code means. Works with Claude Code, Zed and Codex.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/whiz">whiz</a><p>Meetings, screen recordings and interviews into labeled, named, frame-illustrated transcripts with one command, on whisper.cpp.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/article-parser">Article Parser</a><p>An ingestion pipeline from editorial Google Docs to WordPress and Shopify, behind a layered quality gate.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/dudu-power-vim">DuduVim</a><p>A Neovim setup for frontend work: TypeScript and JSX ready out of the box.</p></div>
+    </div>
+    <div class="group">
+      <h3>Linux on real hardware</h3>
+      <div class="tool"><a href="https://github.com/ReidenXerx/alienware-x16r2-linux-speaker-fix">Alienware x16 R2 speaker fix</a><p>Turns on the internal speakers under Linux (Realtek ALC289 with two Cirrus CS35L41 amps), and keeps them working across kernel updates.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/alienware-linux-control">Alienware Linux Control</a><p>Thermal management for Alienware laptops on Linux, across distributions.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/linux-power-manager">Linux Power Manager</a><p>Power presets, TLP integration, GPU switching and hibernation support for laptops and desktops.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/arch-tuning">arch-tuning</a><p>Verified fixes for an Arch and KDE laptop in one idempotent script, including a GPU policy that stops apps waking the dGPU.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/howdy-fedora-godmode">Howdy for Fedora</a><p>One installer for Howdy face recognition on Fedora 41 and later, with full PAM integration.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/rog-ally-steam-os">ROG Ally Suite for SteamOS</a><p>Keeps the ROG Ally's hardware controls working on SteamOS, and restores them after every system update.</p></div>
+    </div>
+    <div class="group">
+      <h3>Game modding</h3>
+      <div class="tool"><a href="https://www.nexusmods.com/site/mods/2235">Event Horizon</a><p>A Vortex extension that packs a curator's exact working mod setup, then rebuilds it and proves it matches: hash-verified, load order pinned.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/NGIO_AutomationSuite">NGIO Automation Suite</a><p>Turns hours of babysitting Skyrim grass cache generation into a short setup that runs unattended.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/safe-resource-packer">Safe Resource Packer</a><p>Sorts mod files safely and packs them into BSA and BA2 archives for Bethesda games.</p></div>
+      <div class="tool"><a href="https://github.com/ReidenXerx/GrassCacheRenamer_Python">Seasonal Grass Cache Renamer</a><p>Renames grass cache files for seasonal variants, many times faster than batch scripts.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="support" aria-labelledby="support-h">
+  <p class="eyebrow kicker">Support</p>
+  <h2 id="support-h">Keep the projects coming</h2>
+  <div class="support">
+    <div>
+      <p>Everything here is free and open. If a plugin saves you time every day, or you just like where this is going, you can support its development on Donatello. Every donation goes into more plugins, faster fixes and new ideas.</p>
+      <div class="cta">
+        <a class="button primary" href="https://donatello.to/DuduPhudu">Support on Donatello</a>
+        <a class="button" href="https://github.com/ReidenXerx">Follow on GitHub</a>
+      </div>
+    </div>
+    <div class="qr">
+      <img src="assets/donate-qr.svg" alt="QR code for donatello.to/DuduPhudu" width="200" height="200">
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p><strong>DuduPhudu</strong> · <a href="https://github.com/ReidenXerx">github.com/ReidenXerx</a> · <a href="https://plugins.omarchy.org">plugins.omarchy.org</a></p>
+  <p>These are independent community plugins for <a href="https://omarchy.org">Omarchy</a>. Omagram is an unofficial client, not affiliated with Telegram. Face ID is a trademark of Apple Inc.</p>
+</footer>
+
+</div>
+
+<script>
+  document.querySelectorAll("[data-copy]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var label = button.textContent
+      var done = function (text) {
+        button.textContent = text
+        setTimeout(function () { button.textContent = label }, 1600)
+      }
+      if (!navigator.clipboard) return done("Copy failed")
+      navigator.clipboard.writeText(button.dataset.copy).then(function () { done("Copied") }, function () { done("Copy failed") })
+    })
+  })
+</script>
+</body>
+</html>
