@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DuduPhudu · Event Horizon, bearing, whiz and Omarchy plugins</title>
-<meta name="description" content="Event Horizon for Vortex, bearing for AI coding agents, whiz transcription and a dozen Omarchy plugins, by DuduPhudu. Free on Nexus Mods, npm and GitHub.">
+<meta name="description" content="Event Horizon for Vortex, bearing for AI coding agents, whiz transcription, PenguID face unlock and a dozen Omarchy plugins, by DuduPhudu. Free on Nexus Mods, npm and GitHub.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="DuduPhudu · Event Horizon, bearing, whiz and Omarchy plugins">
-<meta property="og:description" content="Event Horizon for Vortex, bearing for AI coding agents, whiz transcription and a dozen Omarchy plugins. Free on Nexus Mods, npm and GitHub.">
+<meta property="og:description" content="Event Horizon for Vortex, bearing for AI coding agents, whiz transcription, PenguID face unlock and a dozen Omarchy plugins. Free on Nexus Mods, npm and GitHub.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316191D'/%3E%3Ctext x='32' y='43' font-family='Arial, sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23F2B441'%3EDP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -138,12 +138,6 @@
   h3 { font: 600 1.06rem/1.35 var(--body); margin: 0 0 6px; text-wrap: balance; }
   .intro { color: var(--muted); max-width: 64ch; }
 
-  .featured { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 22px; padding: 28px; border-radius: 14px; background: var(--tint); border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--rule)); }
-  @media (min-width: 820px) { .featured { grid-template-columns: 200px minmax(0, 1fr); } }
-  .featured svg { width: 176px; height: 176px; color: var(--accent); margin-inline: auto; }
-  .featured h3 { font: 650 clamp(1.6rem, 3vw, 2.1rem)/1.05 var(--display); letter-spacing: -.02em; margin-bottom: 10px; }
-  .featured ul { margin: 10px 0 18px; padding-left: 1.1em; max-width: 66ch; }
-  .featured li { margin: 5px 0; }
   .breathe { transform-box: view-box; transform-origin: 60px 60px; animation: breathe 1.8s ease-in-out infinite; }
   @keyframes breathe { 50% { transform: scale(.9); } }
   @media (prefers-reduced-motion: reduce) { .breathe { animation: none; } }
@@ -204,6 +198,32 @@
   .t-b { color: #f0877d; }
   .t-c { color: #d2a8ff; }
   .t-d { color: #56d4dd; }
+  /* PenguID: text beside the same animated penguin as its own page, starting mid-scan so the resting frame is amber. */
+  .pg { margin-top: 18px; border-radius: 16px; overflow: hidden; border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--rule)); background: var(--surface); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "art" "body"; }
+  @media (min-width: 860px) { .pg { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "body art"; } }
+  .pg-body { grid-area: body; padding: clamp(20px, 3vw, 36px); display: grid; gap: 14px; align-content: center; }
+  .pg-body h3 { font: 650 clamp(1.9rem, 3.6vw, 2.7rem)/1 var(--display); letter-spacing: -.028em; margin: 4px 0 8px; }
+  .pg-body p:last-child { margin-bottom: 0; }
+  .pg-body ul { margin: 0; padding-left: 1.1em; }
+  .pg-body li { margin: 6px 0; }
+  .pg-prompt { font: 13px/1.6 var(--mono); background: var(--chip); border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .pg-prompt .dim { color: var(--muted); }
+  .pg-art { grid-area: art; margin: 0; display: grid; place-content: center; justify-items: center; gap: 14px; padding: 40px 24px; min-height: 300px; background: radial-gradient(120% 95% at 78% 18%, #3b2531 0%, #231a1c 45%, #17130f 100%); }
+  .pg-art figcaption { font: 500 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #CFC6B8; }
+  .pg-mark { width: min(230px, 60vw); height: auto; aspect-ratio: 1; color: #A69E94; animation: pg-color 7s ease-in-out -1.4s infinite; }
+  .pg-mark .pop { transform-box: view-box; transform-origin: 60px 60px; animation: pg-pop 7s ease-out -1.4s infinite; }
+  .pg-mark .frame { transform-box: view-box; transform-origin: 60px 60px; animation: pg-breathe 7s ease-in-out -1.4s infinite; }
+  .pg-mark .eyes-open { animation: pg-eyes-open 7s step-end -1.4s infinite; }
+  .pg-mark .eyes-wink { opacity: 0; animation: pg-eyes-wink 7s step-end -1.4s infinite; }
+  @keyframes pg-color { 0%, 12% { color: #A69E94; } 18%, 52% { color: #F2B441; } 57%, 84% { color: #5CC08A; } 92%, 100% { color: #A69E94; } }
+  @keyframes pg-breathe { 0%, 18% { transform: scale(1); } 26% { transform: scale(.9); } 35% { transform: scale(1); } 44% { transform: scale(.9); } 53%, 100% { transform: scale(1); } }
+  @keyframes pg-pop { 0%, 55% { transform: scale(1); } 59% { transform: scale(1.08); } 64%, 100% { transform: scale(1); } }
+  @keyframes pg-eyes-open { 0% { opacity: 1; } 56% { opacity: 0; } 86% { opacity: 1; } }
+  @keyframes pg-eyes-wink { 0% { opacity: 0; } 56% { opacity: 1; } 86% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .pg-mark { animation: none; color: #F2B441; }
+    .pg-mark .pop, .pg-mark .frame, .pg-mark .eyes-open, .pg-mark .eyes-wink { animation: none; }
+  }
   .support { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 22px; padding: 28px; border-radius: 14px; border: 1px solid var(--rule); background: var(--surface); }
   @media (min-width: 760px) { .support { grid-template-columns: minmax(0, 1fr) 200px; } }
   .qr { background: #FFFDF7; border-radius: 12px; padding: 12px; width: 200px; max-width: 100%; justify-self: center; }
@@ -231,6 +251,10 @@
       <path d="M53 35V40"/>
       <path d="M67 35V40"/>
     </g>
+    <g id="fu-wink" transform="translate(60 62) scale(.9) translate(-60 -62)">
+      <path d="M53 35V40"/>
+      <path d="M63.5 39.5Q67 34.5 70.5 39.5"/>
+    </g>
     <g id="fu-beak" transform="translate(60 62) scale(.9) translate(-60 -62)">
       <path d="M55 46L60 50.5L65 46"/>
     </g>
@@ -247,7 +271,6 @@
   <a class="brand" href="#top">Dudu<span class="two">Phudu</span></a>
   <nav class="nav-links" aria-label="Sections">
     <a href="#flagships">Flagships</a>
-    <a href="#penguid">PenguID</a>
     <a href="#plugins">Omarchy plugins</a>
     <a href="#tools">More tools</a>
     <a href="#support">Support</a>
@@ -261,7 +284,7 @@
   <div>
     <p class="eyebrow">Mod tooling · AI agents · Omarchy plugins</p>
     <h1>Dudu<span class="two">Phudu</span></h1>
-    <p class="lede">I build tools that fix what people have learned to live with: mod collections that rebuild exactly, AI agents that keep their bearings, transcripts that know who spoke, and the small pieces that make Omarchy feel finished.</p>
+    <p class="lede">I build tools that fix what people have learned to live with: mod collections that rebuild exactly, AI agents that keep their bearings, transcripts that know who spoke, and an Omarchy laptop that unlocks when it sees you.</p>
     <div class="cta">
       <a class="button primary" href="#flagships">See the flagships</a>
       <a class="button" href="#support">Support my work</a>
@@ -282,7 +305,7 @@
 <section id="flagships" aria-labelledby="flagships-h">
   <p class="eyebrow kicker">Flagships</p>
   <h2 id="flagships-h">The big ones</h2>
-  <p class="intro">The three largest projects, and the best place to start.</p>
+  <p class="intro">The four biggest projects, and the best place to start.</p>
 
   <article class="eh">
     <img class="eh-banner" src="assets/flagships/event-horizon-banner.webp" alt="Event Horizon: a glowing ring at the edge of a black hole" width="1600" height="640">
@@ -375,33 +398,42 @@ Speakers  4 detected
       </div>
     </article>
   </div>
-</section>
 
-<section id="penguid" aria-labelledby="penguid-h">
-  <p class="eyebrow kicker">New</p>
-  <h2 id="penguid-h">Face unlock for Omarchy</h2>
-  <div class="featured">
-    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <use class="breathe" href="#fu-frame" stroke-width="6"/>
-      <use href="#fu-body" stroke-width="5"/>
-      <use href="#fu-eyes" stroke-width="5.6"/>
-      <use href="#fu-beak" stroke-width="5"/>
-      <use href="#fu-feet" stroke-width="5"/>
-    </svg>
-    <div>
-      <h3>Pengu<span class="two">ID</span></h3>
-      <p>Look at your laptop and you're in. The infrared camera recognizes you on the lock screen, at sudo and in polkit prompts, and a small penguin above every window shows what it is doing, the way Face ID does on an iPhone.</p>
+  <article class="pg" id="penguid" aria-labelledby="penguid-h">
+    <div class="pg-body">
+      <div>
+        <p class="label">Omarchy plugin · face unlock</p>
+        <h3 id="penguid-h">Pengu<span class="two">ID</span></h3>
+        <p class="flag-tagline">Look at your laptop and you're in.</p>
+        <p>The infrared camera recognizes you on the lock screen, at sudo and in polkit prompts, while your password stays the real key. Outside the lock screen, a small penguin card shows each step above every window, like Face ID on an iPhone.</p>
+      </div>
+      <div class="pg-prompt"><span class="dim">$</span> sudo pacman -Syu
+Press Enter for face, or type your password:</div>
       <ul>
         <li>Face data stays on the laptop, encrypted under a key sealed by the TPM.</li>
-        <li>Face ID-style password rules: after boot, every 48 hours, and after 5 refused faces.</li>
-        <li>Nothing scans until you press Enter at a prompt.</li>
+        <li>Face ID-style rules: it asks for your password after boot, after 48 hours without it, and after 5 refused faces.</li>
+        <li>It fails closed: if a check can't run, you simply get the password prompt.</li>
       </ul>
       <div class="actions">
         <a class="button primary" href="/omarchy-penguid/">Discover PenguID</a>
-        <a href="https://github.com/ReidenXerx/omarchy-penguid">Source on GitHub</a>
+        <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-penguid.git --enable">Copy install</button>
+        <a href="https://github.com/ReidenXerx/omarchy-penguid">GitHub</a>
       </div>
     </div>
-  </div>
+    <figure class="pg-art">
+      <svg class="pg-mark" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="The PenguID mark: scan corners around a penguin that looks, then winks">
+        <g class="pop">
+          <g class="frame"><use href="#fu-frame" stroke-width="6"/></g>
+          <use href="#fu-body" stroke-width="5"/>
+          <g class="eyes-open"><use href="#fu-eyes" stroke-width="5.6"/></g>
+          <g class="eyes-wink"><use href="#fu-wink" stroke-width="5.2"/></g>
+          <use href="#fu-beak" stroke-width="5"/>
+          <use href="#fu-feet" stroke-width="5"/>
+        </g>
+      </svg>
+      <figcaption>Looking · recognized</figcaption>
+    </figure>
+  </article>
 </section>
 
 <section id="plugins" aria-labelledby="plugins-h">
