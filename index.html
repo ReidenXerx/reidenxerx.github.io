@@ -112,15 +112,21 @@
   .facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; }
   .facts li { font: 500 12px/1 var(--mono); letter-spacing: .03em; padding: 7px 11px; border-radius: 999px; background: var(--chip); }
 
-  /* Three real preview cards, fanned. The one bold move on the page. */
+  /* Three preview cards, fanned: bearing and Event Horizon behind, PenguID's drawn card in front.
+     The one bold move on the page. */
   .fan { position: relative; aspect-ratio: 16 / 12; max-width: 560px; width: 100%; margin-inline: auto; }
-  .fan img { position: absolute; width: 78%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; border: 1px solid var(--rule); box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .45); transition: transform .35s ease; }
-  .fan img:nth-child(1) { left: 0; top: 4%; transform: rotate(-6deg); }
-  .fan img:nth-child(2) { right: 0; top: 18%; transform: rotate(5deg); }
-  .fan img:nth-child(3) { left: 11%; bottom: 0; transform: rotate(-1.5deg); }
-  .fan:hover img:nth-child(1) { transform: rotate(-8deg) translate(-6px, -4px); }
-  .fan:hover img:nth-child(2) { transform: rotate(7deg) translate(6px, -2px); }
-  @media (prefers-reduced-motion: reduce) { .fan img { transition: none; } }
+  .fan > * { position: absolute; width: 78%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; border: 1px solid var(--rule); box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .45); transition: transform .35s ease; }
+  .fan > :nth-child(1) { left: 0; top: 4%; transform: rotate(-6deg); }
+  .fan > :nth-child(2) { right: 0; top: 18%; transform: rotate(5deg); }
+  .fan > :nth-child(3) { left: 11%; bottom: 0; transform: rotate(-1.5deg); }
+  .fan:hover > :nth-child(1) { transform: rotate(-8deg) translate(-6px, -4px); }
+  .fan:hover > :nth-child(2) { transform: rotate(7deg) translate(6px, -2px); }
+  .fan:hover > :nth-child(3) { transform: rotate(-1.5deg) translateY(-4px); }
+  @media (prefers-reduced-motion: reduce) { .fan > * { transition: none; } }
+  .fan-penguid { display: flex; align-items: center; justify-content: space-between; gap: 5%; padding: 0 8%; overflow: hidden; background: radial-gradient(120% 95% at 78% 18%, #3b2531 0%, #231a1c 45%, #17130f 100%); }
+  .fan-penguid .art-name { font: 650 clamp(1.6rem, 3.4vw, 2.5rem)/1 var(--display); letter-spacing: -.025em; color: #F4EFE6; }
+  .fan-penguid .art-name span { color: #F2B441; }
+  .fan-penguid .pg-mark { width: 36%; min-width: 0; }
 
   section { padding-block: 64px 4px; }
   .kicker { margin-bottom: 10px; }
@@ -298,7 +304,19 @@
   <div class="fan" aria-hidden="true">
     <img src="assets/flagships/bearing.webp" alt="" width="1200" height="651">
     <img src="assets/flagships/event-horizon-plan.webp" alt="" width="1120" height="552">
-    <img src="assets/flagships/event-horizon-home.webp" alt="" width="1120" height="800">
+    <div class="fan-penguid">
+      <span class="art-name">Pengu<span>ID</span></span>
+      <svg class="pg-mark" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <g class="pop">
+          <g class="frame"><use href="#fu-frame" stroke-width="6"/></g>
+          <use href="#fu-body" stroke-width="5"/>
+          <g class="eyes-open"><use href="#fu-eyes" stroke-width="5.6"/></g>
+          <g class="eyes-wink"><use href="#fu-wink" stroke-width="5.2"/></g>
+          <use href="#fu-beak" stroke-width="5"/>
+          <use href="#fu-feet" stroke-width="5"/>
+        </g>
+      </svg>
+    </div>
   </div>
 </div>
 
