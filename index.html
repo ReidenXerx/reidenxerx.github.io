@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DuduPhudu · Omarchy plugins, apps and tools</title>
-<meta name="description" content="Omarchy plugins, desktop apps and tools by DuduPhudu: face unlock, a Telegram client in your bar, a system cockpit, touchpad tuning and more. Free and open on GitHub.">
+<title>DuduPhudu · Event Horizon, bearing, whiz and Omarchy plugins</title>
+<meta name="description" content="Event Horizon for Vortex, bearing for AI coding agents, whiz transcription and a dozen Omarchy plugins, by DuduPhudu. Free on Nexus Mods, npm and GitHub.">
 <meta name="color-scheme" content="light dark">
-<meta property="og:title" content="DuduPhudu · Omarchy plugins, apps and tools">
-<meta property="og:description" content="Face unlock, a Telegram client in your bar, a system cockpit, touchpad tuning and more. Free and open on GitHub.">
+<meta property="og:title" content="DuduPhudu · Event Horizon, bearing, whiz and Omarchy plugins">
+<meta property="og:description" content="Event Horizon for Vortex, bearing for AI coding agents, whiz transcription and a dozen Omarchy plugins. Free on Nexus Mods, npm and GitHub.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316191D'/%3E%3Ctext x='32' y='43' font-family='Arial, sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23F2B441'%3EDP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -167,13 +167,43 @@
   .copy { font: 500 12px/1 var(--mono); padding: 7px 10px; border-radius: 999px; border: 1px solid var(--rule); background: var(--chip); color: var(--ink); cursor: pointer; }
   .copy:hover { border-color: var(--accent); }
 
-  .groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 8px 40px; margin-top: 18px; }
-  .group h3 { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 18px 0 4px; }
+  .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 40px; margin-top: 18px; }
+  .tool .label { font-size: 12px; margin: 0 0 2px; }
   .tool { padding: 12px 0; border-top: 1px solid var(--rule); }
   .tool a { font-weight: 600; text-decoration: none; color: var(--ink); }
   .tool a:hover { color: var(--accent); }
   .tool p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
 
+  /* Flagships: Event Horizon gets the stage, bearing and whiz share the row below. */
+  .eh { margin-top: 22px; border-radius: 16px; overflow: hidden; border: 1px solid color-mix(in oklab, #a55cff 35%, var(--rule)); background: var(--surface); display: grid; grid-template-columns: minmax(0, 1fr); }
+  .eh-banner { width: 100%; height: auto; aspect-ratio: 5 / 2; object-fit: cover; }
+  .eh-body { padding: clamp(20px, 3vw, 36px); display: grid; gap: 24px; }
+  .eh-head h3 { font: 650 clamp(2.1rem, 4.6vw, 3.4rem)/1 var(--display); letter-spacing: -.03em; margin: 8px 0 12px; }
+  .eh-tagline, .flag-tagline { font-size: 1.16rem; line-height: 1.45; font-weight: 500; max-width: 48ch; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px 24px; margin: 0; }
+  .stats div { border-top: 2px solid var(--accent); padding-top: 10px; }
+  .stats dt { font: 650 clamp(1.5rem, 3vw, 2.1rem)/1.05 var(--display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .stats dd { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+  .eh-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 8px 40px; }
+  .eh-columns h4 { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+  .eh-columns ul, .flag ul { margin: 0; padding-left: 1.1em; }
+  .eh-columns li, .flag li { margin: 6px 0; }
+  .eh-meta { color: var(--muted); font-size: .92rem; margin: 0; }
+  .eh .cta { margin-top: 0; }
+  .duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 18px; margin-top: 18px; }
+  .flag { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
+  .flag > img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 1px solid var(--rule); }
+  .flag-body { padding: 20px 22px 22px; display: grid; gap: 12px; align-content: start; }
+  .flag-body h3 { font: 650 clamp(1.7rem, 3vw, 2.3rem)/1 var(--display); letter-spacing: -.025em; margin: 4px 0 2px; }
+  .term { aspect-ratio: 16 / 9; background: #0d1117; display: grid; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--rule); }
+  .term pre { margin: 0; font: clamp(10px, 1.05vw, 13px)/1.5 var(--mono); color: #d7dde3; white-space: pre; overflow: hidden; }
+  .t-dim { color: #7d8590; }
+  .t-accent { color: #f2b441; }
+  .t-ok { color: #5cc08a; }
+  .t-a { color: #58a6ff; }
+  .t-b { color: #f0877d; }
+  .t-c { color: #d2a8ff; }
+  .t-d { color: #56d4dd; }
   .support { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 22px; padding: 28px; border-radius: 14px; border: 1px solid var(--rule); background: var(--surface); }
   @media (min-width: 760px) { .support { grid-template-columns: minmax(0, 1fr) 200px; } }
   .qr { background: #FFFDF7; border-radius: 12px; padding: 12px; width: 200px; max-width: 100%; justify-self: center; }
@@ -216,9 +246,10 @@
 <header class="nav">
   <a class="brand" href="#top">Dudu<span class="two">Phudu</span></a>
   <nav class="nav-links" aria-label="Sections">
+    <a href="#flagships">Flagships</a>
     <a href="#penguid">PenguID</a>
     <a href="#plugins">Omarchy plugins</a>
-    <a href="#tools">Tools</a>
+    <a href="#tools">More tools</a>
     <a href="#support">Support</a>
     <a href="https://github.com/ReidenXerx">GitHub</a>
   </nav>
@@ -228,25 +259,123 @@
 
 <div class="hero">
   <div>
-    <p class="eyebrow">Omarchy plugins · desktop apps · tools</p>
+    <p class="eyebrow">Mod tooling · AI agents · Omarchy plugins</p>
     <h1>Dudu<span class="two">Phudu</span></h1>
-    <p class="lede">I build the pieces that make a Linux desktop feel finished: face unlock, a Telegram client in the bar, a cockpit for everything running, and more. All free, all on GitHub.</p>
+    <p class="lede">I build tools that fix what people have learned to live with: mod collections that rebuild exactly, AI agents that keep their bearings, transcripts that know who spoke, and the small pieces that make Omarchy feel finished.</p>
     <div class="cta">
-      <a class="button primary" href="#plugins">See the plugins</a>
+      <a class="button primary" href="#flagships">See the flagships</a>
       <a class="button" href="#support">Support my work</a>
     </div>
     <ul class="facts" aria-label="At a glance">
+      <li>Event Horizon on Nexus Mods</li>
+      <li>bearing on npm</li>
       <li>12 Omarchy plugins</li>
-      <li>8 on the Omarchy marketplace</li>
-      <li>Open source</li>
     </ul>
   </div>
   <div class="fan" aria-hidden="true">
-    <img src="assets/previews/omagram.webp" alt="" width="720" height="405">
-    <img src="assets/previews/cockpit.webp" alt="" width="720" height="405">
-    <img src="assets/previews/tactile.webp" alt="" width="720" height="405">
+    <img src="assets/flagships/bearing.webp" alt="" width="1200" height="651">
+    <img src="assets/flagships/event-horizon-plan.webp" alt="" width="1120" height="552">
+    <img src="assets/flagships/event-horizon-home.webp" alt="" width="1120" height="800">
   </div>
 </div>
+
+<section id="flagships" aria-labelledby="flagships-h">
+  <p class="eyebrow kicker">Flagships</p>
+  <h2 id="flagships-h">The big ones</h2>
+  <p class="intro">The three largest projects, and the best place to start.</p>
+
+  <article class="eh">
+    <img class="eh-banner" src="assets/flagships/event-horizon-banner.webp" alt="Event Horizon: a glowing ring at the edge of a black hole" width="1600" height="640">
+    <div class="eh-body">
+      <div class="eh-head">
+        <p class="label">Vortex extension · Nexus Mods</p>
+        <h3>Event Horizon</h3>
+        <p class="eh-tagline">Build a collection that arrives the way you built it. Then keep it that way.</p>
+        <p>A Vortex Collection is a list of mods: here they are, install them. An Event Horizon package is a snapshot of a setup that worked: rebuild it exactly, and prove it matches.</p>
+      </div>
+      <dl class="stats">
+        <div><dt>1,900 mods</dt><dd>in the Skyrim SE profile it is proven on, plus a 950-mod Fallout 4 collection</dd></div>
+        <div><dt>17,159 of 17,161</dt><dd>contested files go to the curator's winner on a 1,753-mod collection; the other two are files the game never loads</dd></div>
+        <div><dt>2,600+ tests</dt><dd>including a render of every screen</dd></div>
+      </dl>
+      <div class="eh-columns">
+        <div>
+          <h4>For players</h4>
+          <ul>
+            <li>The whole plan before anything is written, with your game setup checked first.</li>
+            <li>One mod at a time, every archive hashed against the manifest.</li>
+            <li>The curator's load order, pinned and watched: you're told the moment a sort undoes it.</li>
+            <li>Collection Doctor shows what is still true, with the repair on each finding.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>For curators</h4>
+          <ul>
+            <li>Your whole profile in one table: updates, missing requirements, duplicates and plugins.</li>
+            <li>"Make it work" reads a mod's whole requirement chain and installs it in dependency order.</li>
+            <li>Builds tell a gone file from a gone page, and ship what can't be downloaded any more by hash.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="eh-meta">Skyrim Special Edition, Fallout 4, Fallout 3, Fallout: New Vegas and Starfield, on Vortex 2. Windows, plus Linux and Steam Deck through Proton. Built by DuduPhudu and Bluuuk; free on Nexus Mods, source available under PolyForm Strict.</p>
+      <div class="cta">
+        <a class="button primary" href="https://www.nexusmods.com/site/mods/2235">Get it on Nexus Mods</a>
+        <a class="button" href="https://github.com/ReidenXerx/Event-Horizon">Source on GitHub</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="duo">
+    <article class="flag">
+      <img src="assets/flagships/bearing.webp" alt="The same intent without and with bearing: one ships a feature that was already measured and killed, the other is caught in one line" width="1200" height="651" loading="lazy">
+      <div class="flag-body">
+        <p class="label">AI coding agents · npm</p>
+        <h3>bearing</h3>
+        <p class="flag-tagline">Your tests catch code that breaks. Nothing catches an agent that has drifted about what the code means.</p>
+        <ul>
+          <li><strong>North-stars</strong> outrank every other doc, so an idea you killed can't quietly come back.</li>
+          <li><strong>Task-core</strong> saves the task before compaction throws the detail away.</li>
+          <li><strong>Microscope</strong> reviews like an expert in your domain, and every finding must survive a refutation pass.</li>
+          <li>Eleven independent modules for Claude Code, Zed and Codex, at about 25,000 tokens a session.</li>
+        </ul>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="npx bearing">Copy npx bearing</button>
+          <a href="https://github.com/ReidenXerx/bearing">GitHub</a>
+          <a href="https://www.npmjs.com/package/bearing">npm</a>
+        </div>
+      </div>
+    </article>
+    <article class="flag">
+      <div class="term" role="img" aria-label="whiz in a terminal: four speakers detected, then an HTML transcript written">
+<pre><span class="t-dim">$</span> whiz transcribe recording.mov
+<span class="t-accent">▸ diarizing</span>
+Speakers  4 detected
+    <span class="t-a">●</span> Alice  181 segments
+    <span class="t-b">●</span> Bob    152 segments
+    <span class="t-c">●</span> Carol   12 segments
+    <span class="t-d">●</span> Dave     6 segments
+<span class="t-accent">▸ writing HTML transcript</span>
+  <span class="t-ok">✓</span> Wrote HTML transcript
+    recording.speakers.html</pre>
+      </div>
+      <div class="flag-body">
+        <p class="label">Transcription · CLI</p>
+        <h3>whiz</h3>
+        <p class="flag-tagline">From a recording to a labeled, named, frame-illustrated transcript in one command.</p>
+        <ul>
+          <li><strong>Knows your speakers:</strong> name someone once, and later recordings label them automatically.</li>
+          <li><strong>Sees the screen:</strong> the analysis checks what was shown against what was said.</li>
+          <li><strong>Made for hour-long videos,</strong> with an Essentials summary you can feed back later.</li>
+          <li>Local and private by default, on whisper.cpp and Ollama: no uploads, no API keys.</li>
+        </ul>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="pipx install git+https://github.com/ReidenXerx/whiz.git">Copy install</button>
+          <a href="https://github.com/ReidenXerx/whiz">GitHub</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
 
 <section id="penguid" aria-labelledby="penguid-h">
   <p class="eyebrow kicker">New</p>
@@ -439,32 +568,14 @@
 </section>
 
 <section id="tools" aria-labelledby="tools-h">
-  <p class="eyebrow kicker">Tools and apps</p>
-  <h2 id="tools-h">Beyond the desktop</h2>
-  <div class="groups">
-    <div class="group">
-      <h3>AI and developer tools</h3>
-      <div class="tool"><a href="https://github.com/ReidenXerx/bearing">bearing</a><p>An intel layer for AI coding agents that keeps evidence, so an agent can't quietly drift from what the code means. Works with Claude Code, Zed and Codex.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/whiz">whiz</a><p>Meetings, screen recordings and interviews into labeled, named, frame-illustrated transcripts with one command, on whisper.cpp.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/article-parser">Article Parser</a><p>An ingestion pipeline from editorial Google Docs to WordPress and Shopify, behind a layered quality gate.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/dudu-power-vim">DuduVim</a><p>A Neovim setup for frontend work: TypeScript and JSX ready out of the box.</p></div>
-    </div>
-    <div class="group">
-      <h3>Linux on real hardware</h3>
-      <div class="tool"><a href="https://github.com/ReidenXerx/alienware-x16r2-linux-speaker-fix">Alienware x16 R2 speaker fix</a><p>Turns on the internal speakers under Linux (Realtek ALC289 with two Cirrus CS35L41 amps), and keeps them working across kernel updates.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/alienware-linux-control">Alienware Linux Control</a><p>Thermal management for Alienware laptops on Linux, across distributions.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/linux-power-manager">Linux Power Manager</a><p>Power presets, TLP integration, GPU switching and hibernation support for laptops and desktops.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/arch-tuning">arch-tuning</a><p>Verified fixes for an Arch and KDE laptop in one idempotent script, including a GPU policy that stops apps waking the dGPU.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/howdy-fedora-godmode">Howdy for Fedora</a><p>One installer for Howdy face recognition on Fedora 41 and later, with full PAM integration.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/rog-ally-steam-os">ROG Ally Suite for SteamOS</a><p>Keeps the ROG Ally's hardware controls working on SteamOS, and restores them after every system update.</p></div>
-    </div>
-    <div class="group">
-      <h3>Game modding</h3>
-      <div class="tool"><a href="https://www.nexusmods.com/site/mods/2235">Event Horizon</a><p>A Vortex extension that packs a curator's exact working mod setup, then rebuilds it and proves it matches: hash-verified, load order pinned.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/NGIO_AutomationSuite">NGIO Automation Suite</a><p>Turns hours of babysitting Skyrim grass cache generation into a short setup that runs unattended.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/safe-resource-packer">Safe Resource Packer</a><p>Sorts mod files safely and packs them into BSA and BA2 archives for Bethesda games.</p></div>
-      <div class="tool"><a href="https://github.com/ReidenXerx/GrassCacheRenamer_Python">Seasonal Grass Cache Renamer</a><p>Renames grass cache files for seasonal variants, many times faster than batch scripts.</p></div>
-    </div>
+  <p class="eyebrow kicker">More tools</p>
+  <h2 id="tools-h">Smaller projects worth a look</h2>
+  <div class="tools">
+    <div class="tool"><p class="label">Game modding</p><a href="https://github.com/ReidenXerx/NGIO_AutomationSuite">NGIO Automation Suite</a><p>Turns hours of babysitting Skyrim grass cache generation into a short setup that runs unattended.</p></div>
+    <div class="tool"><p class="label">Game modding</p><a href="https://github.com/ReidenXerx/safe-resource-packer">Safe Resource Packer</a><p>Sorts mod files safely and packs them into BSA and BA2 archives for Bethesda games.</p></div>
+    <div class="tool"><p class="label">Game modding</p><a href="https://github.com/ReidenXerx/GrassCacheRenamer_Python">Seasonal Grass Cache Renamer</a><p>Renames grass cache files for seasonal variants, many times faster than batch scripts.</p></div>
+    <div class="tool"><p class="label">Linux hardware</p><a href="https://github.com/ReidenXerx/alienware-x16r2-linux-speaker-fix">Alienware x16 R2 speaker fix</a><p>Turns on the internal speakers under Linux (Realtek ALC289 with two Cirrus CS35L41 amps), and keeps them working across kernel updates.</p></div>
+    <div class="tool"><p class="label">Developer tools</p><a href="https://github.com/ReidenXerx/article-parser">Article Parser</a><p>An ingestion pipeline from editorial Google Docs to WordPress and Shopify, behind a layered quality gate.</p></div>
   </div>
 </section>
 
@@ -473,7 +584,7 @@
   <h2 id="support-h">Keep the projects coming</h2>
   <div class="support">
     <div>
-      <p>Everything here is free and open. If a plugin saves you time every day, or you just like where this is going, you can support its development on Donatello. Every donation goes into more plugins, faster fixes and new ideas.</p>
+      <p>Everything here is free to use. If something saves you time every day, or you just like where it is going, you can support its development on Donatello. Every donation goes into new features, faster fixes and new projects.</p>
       <div class="cta">
         <a class="button primary" href="https://donatello.to/DuduPhudu">Support on Donatello</a>
         <a class="button" href="https://github.com/ReidenXerx">Follow on GitHub</a>
@@ -489,7 +600,7 @@
 
 <footer class="foot">
   <p><strong>DuduPhudu</strong> · <a href="https://github.com/ReidenXerx">github.com/ReidenXerx</a> · <a href="https://plugins.omarchy.org">plugins.omarchy.org</a></p>
-  <p>These are independent community plugins for <a href="https://omarchy.org">Omarchy</a>. Omagram is an unofficial client, not affiliated with Telegram. Face ID is a trademark of Apple Inc.</p>
+  <p>The Omarchy plugins are community projects, not part of <a href="https://omarchy.org">Omarchy</a> itself. Event Horizon is an independent extension for Vortex, not affiliated with Nexus Mods. Omagram is an unofficial client, not affiliated with Telegram. Face ID is a trademark of Apple Inc.; game names are trademarks of their owners.</p>
 </footer>
 
 </div>
