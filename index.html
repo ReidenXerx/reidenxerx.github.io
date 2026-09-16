@@ -127,6 +127,18 @@
   .fan-penguid .art-name { font: 650 clamp(1.6rem, 3.4vw, 2.5rem)/1 var(--display); letter-spacing: -.025em; color: #F4EFE6; }
   .fan-penguid .art-name span { color: #F2B441; }
   .fan-penguid .pg-mark { width: 36%; min-width: 0; }
+  /* Mynah joins the fan as the pill it actually is — a fourth 16:9 card would
+     crowd the stack, and the pill's shape is the recognisable part. */
+  .fan > .fan-mynah {
+    width: 88%; aspect-ratio: 7.4 / 1; left: 6%; bottom: -6%;
+    transform: rotate(2.5deg); border-radius: 999px; border: 1px solid rgba(245, 179, 1, .45);
+    background: linear-gradient(100deg, #191510 0%, #0F0D0B 100%);
+    display: flex; align-items: center; gap: 4%; padding: 0 5%; overflow: hidden; z-index: 2;
+  }
+  .fan:hover > .fan-mynah { transform: rotate(2.5deg) translateY(4px); }
+  .fan-mynah .my-bird { width: 11%; min-width: 0; flex: none; }
+  .fan-mynah .my-bars { height: 52%; flex: none; }
+  .fan-mynah .my-word { font: 500 clamp(.62rem, 1.5vw, .9rem)/1 var(--mono); color: #C9BFAE; letter-spacing: .04em; }
 
   section { padding-block: 64px 4px; }
   .kicker { margin-bottom: 10px; }
@@ -309,7 +321,7 @@
   <div>
     <p class="eyebrow">Mod tooling · AI agents · Omarchy plugins</p>
     <h1>Dudu<span class="two">Phudu</span></h1>
-    <p class="lede">I build tools that fix what people have learned to live with: mod collections that rebuild exactly, AI agents that keep their bearings, transcripts that know who spoke, and an Omarchy laptop that unlocks when it sees you.</p>
+    <p class="lede">I build tools that fix what people have learned to live with: mod collections that rebuild exactly, AI agents that keep their bearings, transcripts that know who spoke, a laptop that unlocks when it sees you, and dictation that types where you already are.</p>
     <div class="cta">
       <a class="button primary" href="#flagships">See the flagships</a>
       <a class="button" href="#support">Support my work</a>
@@ -317,7 +329,7 @@
     <ul class="facts" aria-label="At a glance">
       <li>Event Horizon on Nexus Mods</li>
       <li>bearing on npm</li>
-      <li>12 Omarchy plugins</li>
+      <li>13 Omarchy plugins</li>
     </ul>
   </div>
   <div class="fan" aria-hidden="true">
@@ -336,13 +348,18 @@
         </g>
       </svg>
     </div>
+    <div class="fan-mynah">
+      <svg class="my-bird" viewBox="38 -10 208 208"><g><path d="M178 86 C176 58 156 36 126 34 C86 32 52 64 52 104 C52 136 70 162 98 172 C124 182 152 176 168 158 C176 140 179 112 178 86 Z" fill="#FBF7EF"/><path d="M104 40 C96 22 98 10 110 2 C112 16 118 26 128 32 Z M132 30 C128 12 134 2 148 0 C146 14 148 24 154 34 Z M88 50 C74 38 70 26 78 16 C84 28 92 36 102 40 Z" fill="#FBF7EF"/><path d="M145.84 105.32 A27 16 -28 1 0 98.16 130.68 A27 16 -28 1 0 145.84 105.32 Z" fill="#F5B301"/><path d="M176 78 L224 90 C232 93 232 99 224 101 L178 100 Z" fill="#F5B301"/><path d="M178 112 L220 116 C227 118 227 124 220 125 L178 126 Z" fill="#F5B301"/><path d="M126 92 a24 24 0 1 0 48 0 a24 24 0 1 0 -48 0 z" fill="#0F0D0B"/><path d="M144 96 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0 z" fill="#FBF7EF"/><path d="M138 84 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0 z" fill="#0F0D0B"/></g></svg>
+      <svg class="my-bars" viewBox="0 0 84 28" preserveAspectRatio="xMidYMid meet"><rect x="0" y="4.7" width="4" height="18.6" rx="2" fill="#F5B301"/><rect x="7" y="1.5" width="4" height="25.0" rx="2" fill="#F5B301"/><rect x="14" y="3.9" width="4" height="20.2" rx="2" fill="#F5B301"/><rect x="21" y="1.5" width="4" height="25.0" rx="2" fill="#F5B301"/><rect x="28" y="2.4" width="4" height="23.2" rx="2" fill="#F5B301"/><rect x="35" y="5.1" width="4" height="17.7" rx="2" fill="#F5B301"/><rect x="42" y="9.1" width="4" height="9.8" rx="2" fill="#F5B301"/><rect x="49" y="10.1" width="4" height="7.8" rx="2" fill="#F5B301"/><rect x="56" y="6.3" width="4" height="15.3" rx="2" fill="#F5B301"/><rect x="63" y="7.2" width="4" height="13.6" rx="2" fill="#F5B301"/><rect x="70" y="9.2" width="4" height="9.6" rx="2" fill="#F5B301"/><rect x="77" y="10.4" width="4" height="7.2" rx="2" fill="#F5B301"/></svg>
+      <span class="my-word">listening</span>
+    </div>
   </div>
 </div>
 
 <section id="flagships" aria-labelledby="flagships-h">
   <p class="eyebrow kicker">Flagships</p>
   <h2 id="flagships-h">The big ones</h2>
-  <p class="intro">The four biggest projects, and the best place to start.</p>
+  <p class="intro">The five biggest projects, and the best place to start.</p>
 
   <article class="eh">
     <img class="eh-banner" src="assets/flagships/event-horizon-banner.webp" alt="Event Horizon: a glowing ring at the edge of a black hole" width="1600" height="640">
@@ -531,6 +548,19 @@ Press Enter for face, or type your password:</div>
     </article>
 
     <article class="card">
+      <img src="assets/previews/mynah.webp" alt="Mynah preview card" width="720" height="405" loading="lazy">
+      <div class="card-body">
+        <div class="card-top"><h3>Mynah</h3><span class="badge new">New</span></div>
+        <p>Voice dictation on a key. Press it and talk; every time you pause, that sentence is transcribed on your own machine and typed into whatever window has focus, while a pill shows the spectrum of your voice.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-mynah.git --enable">Copy install</button>
+          <a href="/mynah/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-mynah">GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
       <img src="assets/previews/omagram.webp" alt="Omagram preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
         <div class="card-top"><h3>Omagram</h3><span class="badge review">In review</span></div>
@@ -557,7 +587,7 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/tactile.webp" alt="Tactile preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Tactile</h3><span class="badge review">In review</span></div>
+        <div class="card-top"><h3>Tactile</h3><span class="badge listed">Marketplace</span></div>
         <p>Tune your touchpad and mouse by feel: changes undo themselves unless you keep them, custom acceleration curves, gestures with a finger map, per-app settings and a live finger view.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-tactile.git --enable">Copy install</button>
@@ -569,7 +599,7 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/barber.webp" alt="Barber preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Barber</h3><span class="badge review">In review</span></div>
+        <div class="card-top"><h3>Barber</h3><span class="badge listed">Marketplace</span></div>
         <p>Edit the bar right on the bar: take widgets off, add, move and set them up in place, with undo and layouts that switch by themselves.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-barber.git --enable">Copy install</button>
