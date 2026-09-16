@@ -1,0 +1,5 @@
+# duduphudu.app
+User-agent: *
+Allow: /
+
+Sitemap: https://duduphudu.app/sitemap.xml
