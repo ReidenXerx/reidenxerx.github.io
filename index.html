@@ -28,279 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<style>
-  :root {
-    --ground: #F2F3F0;
-    --surface: #FBFBF9;
-    --ink: #16191D;
-    --muted: #596069;
-    --rule: #D5D9D5;
-    --chip: #E6E9E5;
-    --accent: #9A5600;
-    --ok: #2D7A4B;
-    --bad: #B42318;
-    --tint: color-mix(in oklab, var(--accent) 10%, var(--surface));
-    --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-    --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    color-scheme: light;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --ground: #0F1215;
-      --surface: #161A1E;
-      --ink: #E6E9E5;
-      --muted: #9AA2AA;
-      --rule: #2A3036;
-      --chip: #1F242A;
-      --accent: #F2B441;
-      --ok: #5CC08A;
-      --bad: #F0877D;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --ground: #0F1215;
-    --surface: #161A1E;
-    --ink: #E6E9E5;
-    --muted: #9AA2AA;
-    --rule: #2A3036;
-    --chip: #1F242A;
-    --accent: #F2B441;
-    --ok: #5CC08A;
-    --bad: #F0877D;
-    color-scheme: dark;
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  body {
-    margin: 0;
-    background: var(--ground);
-    color: var(--ink);
-    font: 16px/1.62 var(--body);
-    padding-inline: 20px;
-    padding-block: 0 64px;
-    -webkit-font-smoothing: antialiased;
-  }
-  .page { max-width: 1120px; margin: 0 auto; }
-  p { margin: 0 0 12px; max-width: 68ch; }
-  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: .18em; }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-  code { font-family: var(--mono); font-size: .86em; background: var(--chip); padding: .06em .34em; border-radius: 4px; overflow-wrap: anywhere; }
-  img { max-width: 100%; display: block; }
-  .defs { position: absolute; width: 0; height: 0; overflow: hidden; }
-
-  .eyebrow, .label {
-    font: 500 12px/1.4 var(--mono);
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 0;
-  }
-  .two { color: var(--accent); }
-
-  .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-block: 18px; border-bottom: 1px solid var(--rule); }
-  .brand { font: 650 1.25rem/1 var(--display); letter-spacing: -.01em; color: var(--ink); text-decoration: none; }
-  .nav-links { display: flex; flex-wrap: wrap; gap: 6px 20px; font: 13px/1.5 var(--mono); }
-  .nav-links a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; }
-  .nav-links a:hover { color: var(--accent); border-color: currentColor; }
-
-  .hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 64px 32px; align-items: center; }
-  @media (min-width: 900px) { .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); } }
-  h1 {
-    font-family: var(--display);
-    font-weight: 650;
-    font-variation-settings: "opsz" 96;
-    font-size: clamp(3rem, 8.4vw, 6rem);
-    line-height: .96;
-    letter-spacing: -.037em;
-    margin: 14px 0 20px;
-  }
-  .lede { font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.5; max-width: 38ch; margin: 0; }
-  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-  .button { display: inline-flex; align-items: center; padding: 11px 18px; border-radius: 999px; font: 500 .95rem/1 var(--body); text-decoration: none; border: 1px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; }
-  .button.primary { background: var(--ink); color: var(--ground); }
-  .button:hover { border-color: var(--accent); }
-  .button.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--ground); }
-  .facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; }
-  .facts li { font: 500 12px/1 var(--mono); letter-spacing: .03em; padding: 7px 11px; border-radius: 999px; background: var(--chip); }
-
-  /* Three preview cards, fanned: bearing and Event Horizon behind, PenguID's drawn card in front.
-     The one bold move on the page. */
-  .fan { position: relative; aspect-ratio: 16 / 12; max-width: 560px; width: 100%; margin-inline: auto; }
-  .fan > * { position: absolute; width: 78%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; border: 1px solid var(--rule); box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .45); transition: transform .35s ease; }
-  .fan > :nth-child(1) { left: 0; top: 4%; transform: rotate(-6deg); }
-  .fan > :nth-child(2) { right: 0; top: 18%; transform: rotate(5deg); }
-  .fan > :nth-child(3) { left: 11%; bottom: 0; transform: rotate(-1.5deg); }
-  .fan:hover > :nth-child(1) { transform: rotate(-8deg) translate(-6px, -4px); }
-  .fan:hover > :nth-child(2) { transform: rotate(7deg) translate(6px, -2px); }
-  .fan:hover > :nth-child(3) { transform: rotate(-1.5deg) translateY(-4px); }
-  @media (prefers-reduced-motion: reduce) { .fan > * { transition: none; } }
-  /* bearing in the fan: the dial from its own page, needle drifting until the
-     north-star pulls it back. Drawn rather than a screenshot, like PenguID's. */
-  .fan-bearing { display: flex; align-items: center; justify-content: flex-start; gap: 5%; padding: 0 3%; overflow: hidden;
-                 background: radial-gradient(120% 95% at 24% 12%, #16242A 0%, #0D1519 48%, #080E10 100%); }
-  .fan-bearing .art-name { font: 650 clamp(1.2rem, 2.6vw, 1.9rem)/1 var(--display); letter-spacing: -.03em; color: #E3EAE7; white-space: nowrap; }
-  .fan-bearing .art-name span { color: #E0A458; }
-  .bearing-dial { width: 62%; min-width: 0; flex: none; height: auto; aspect-ratio: 1; margin-left: -16%; }
-  .bearing-needle { transform-origin: 120px 120px; transform-box: view-box; animation: bearing-drift 9s cubic-bezier(.3, 0, .2, 1) infinite; }
-  .bearing-lock { opacity: 0; transform-box: view-box; transform-origin: 120px 120px; animation: bearing-lock 9s ease-out infinite; }
-  @keyframes bearing-drift {
-    0%, 6% { transform: rotate(0deg); }
-    46% { transform: rotate(23deg); }
-    58% { transform: rotate(26deg); }
-    66% { transform: rotate(-2deg); }
-    72%, 100% { transform: rotate(0deg); }
-  }
-  @keyframes bearing-lock {
-    0%, 58% { opacity: 0; }
-    62% { opacity: 1; }
-    80% { opacity: .9; }
-    100% { opacity: 0; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .bearing-needle, .bearing-lock { animation: none; }
-    .bearing-lock { opacity: .9; }
-  }
-  .fan-penguid { display: flex; align-items: center; justify-content: space-between; gap: 5%; padding: 0 8%; overflow: hidden; background: radial-gradient(120% 95% at 78% 18%, #3b2531 0%, #231a1c 45%, #17130f 100%); }
-  .fan-penguid .art-name { font: 650 clamp(1.6rem, 3.4vw, 2.5rem)/1 var(--display); letter-spacing: -.025em; color: #F4EFE6; }
-  .fan-penguid .art-name span { color: #F2B441; }
-  .fan-penguid .pg-mark { width: 36%; min-width: 0; }
-  /* Mynah joins the fan as the pill it actually is — a fourth 16:9 card would
-     crowd the stack, and the pill's shape is the recognisable part. */
-  .fan > .fan-mynah {
-    width: 88%; aspect-ratio: 7.4 / 1; left: 6%; bottom: -6%;
-    transform: rotate(2.5deg); border-radius: 999px; border: 1px solid rgba(245, 179, 1, .45);
-    background: linear-gradient(100deg, #191510 0%, #0F0D0B 100%);
-    display: flex; align-items: center; gap: 4%; padding: 0 5%; overflow: hidden; z-index: 2;
-  }
-  .fan:hover > .fan-mynah { transform: rotate(2.5deg) translateY(4px); }
-  .fan-mynah .my-bird { width: 11%; min-width: 0; flex: none; }
-  .fan-mynah .my-bars { height: 52%; flex: none; }
-  .fan-mynah .my-word { font: 500 clamp(.62rem, 1.5vw, .9rem)/1 var(--mono); color: #C9BFAE; letter-spacing: .04em; }
-
-  section { padding-block: 64px 4px; }
-  .kicker { margin-bottom: 10px; }
-  h2 {
-    font-family: var(--display);
-    font-weight: 620;
-    font-variation-settings: "opsz" 48;
-    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-    line-height: 1.08;
-    letter-spacing: -.02em;
-    margin: 0 0 14px;
-    max-width: 26ch;
-    text-wrap: balance;
-  }
-  h3 { font: 600 1.06rem/1.35 var(--body); margin: 0 0 6px; text-wrap: balance; }
-  .intro { color: var(--muted); max-width: 64ch; }
-
-  .breathe { transform-box: view-box; transform-origin: 60px 60px; animation: breathe 1.8s ease-in-out infinite; }
-  @keyframes breathe { 50% { transform: scale(.9); } }
-  @media (prefers-reduced-motion: reduce) { .breathe { animation: none; } }
-
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; margin-top: 22px; }
-  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
-  .card img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 1px solid var(--rule); background: #1a1714; }
-  /* PenguID has no preview image yet: a drawn card in the same dark, warm style as the others. */
-  .card-art { aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: space-between; gap: 6%; padding: 0 9%; border-bottom: 1px solid var(--rule); background: radial-gradient(120% 95% at 78% 18%, #3b2531 0%, #231a1c 45%, #17130f 100%); }
-  .card-art .art-name { font: 650 clamp(1.7rem, 3.2vw, 2.3rem)/1 var(--display); letter-spacing: -.025em; color: #F4EFE6; }
-  .card-art .art-name span { color: #F2B441; }
-  .card-art svg { width: 36%; height: auto; color: #F2B441; }
-  .card-body { padding: 16px 18px 18px; display: grid; gap: 10px; align-content: start; }
-  .card-body p { margin: 0; font-size: .94rem; }
-  .card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-  .badge { display: inline-block; font: 500 10.5px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
-  .badge.listed { color: var(--ok); }
-  .badge.review { color: var(--muted); }
-  .badge.new { color: var(--accent); }
-  .actions { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-top: 4px; font-size: .9rem; }
-  .copy { font: 500 12px/1 var(--mono); padding: 7px 10px; border-radius: 999px; border: 1px solid var(--rule); background: var(--chip); color: var(--ink); cursor: pointer; }
-  .copy:hover { border-color: var(--accent); }
-
-  .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 40px; margin-top: 18px; }
-  .tool .label { font-size: 12px; margin: 0 0 2px; }
-  .tool { padding: 12px 0; border-top: 1px solid var(--rule); }
-  .tool a { font-weight: 600; text-decoration: none; color: var(--ink); }
-  .tool a:hover { color: var(--accent); }
-  .tool p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
-
-  /* Flagships: Event Horizon gets the stage, bearing and whiz share the row below. */
-  .eh { margin-top: 22px; border-radius: 16px; overflow: hidden; border: 1px solid color-mix(in oklab, #a55cff 35%, var(--rule)); background: var(--surface); display: grid; grid-template-columns: minmax(0, 1fr); }
-  .eh-banner { width: 100%; height: auto; aspect-ratio: 5 / 2; object-fit: cover; }
-  .eh-body { padding: clamp(20px, 3vw, 36px); display: grid; gap: 24px; }
-  .eh-head h3 { font: 650 clamp(2.1rem, 4.6vw, 3.4rem)/1 var(--display); letter-spacing: -.03em; margin: 8px 0 12px; }
-  .eh-tagline, .flag-tagline { font-size: 1.16rem; line-height: 1.45; font-weight: 500; max-width: 48ch; }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px 24px; margin: 0; }
-  .stats div { border-top: 2px solid var(--accent); padding-top: 10px; }
-  .stats dt { font: 650 clamp(1.5rem, 3vw, 2.1rem)/1.05 var(--display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
-  .stats dd { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
-  .eh-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 8px 40px; }
-  .eh-columns h4 { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
-  .eh-columns ul, .flag ul { margin: 0; padding-left: 1.1em; }
-  .eh-columns li, .flag li { margin: 6px 0; }
-  .eh-meta { color: var(--muted); font-size: .92rem; margin: 0; }
-  .eh .cta { margin-top: 0; }
-  .duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 18px; margin-top: 18px; }
-  .flag { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
-  .flag > img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 1px solid var(--rule); }
-  .flag-body { padding: 20px 22px 22px; display: grid; gap: 12px; align-content: start; }
-  .flag-body h3 { font: 650 clamp(1.7rem, 3vw, 2.3rem)/1 var(--display); letter-spacing: -.025em; margin: 4px 0 2px; }
-  /* PenguID: text beside the same animated penguin as its own page, starting mid-scan so the resting frame is amber. */
-  /* Mynah: the PenguID block mirrored, in the bird's own jet and saffron. */
-  .my { margin-top: 18px; border-radius: 16px; overflow: hidden; border: 1px solid color-mix(in oklab, #F5B301 32%, var(--rule)); background: var(--surface); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "art" "body"; }
-  @media (min-width: 860px) { .my { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "art body"; } }
-  .my-body { grid-area: body; padding: clamp(20px, 3vw, 36px); display: grid; gap: 14px; align-content: center; }
-  .my-body h3 { font: 650 clamp(1.9rem, 3.6vw, 2.7rem)/1 var(--display); letter-spacing: -.028em; margin: 4px 0 8px; }
-  .my-body ul { margin: 0; padding-left: 1.1em; }
-  .my-body li { margin: 6px 0; }
-  .my-body p:last-child { margin-bottom: 0; }
-  .my-line { font: 13px/1.7 var(--mono); background: var(--chip); border-radius: 8px; padding: 10px 12px; overflow-wrap: anywhere; }
-  .my-line .dim { color: var(--muted); }
-  .my-line .typed { color: var(--ok); }
-  .my-art { grid-area: art; margin: 0; display: grid; place-content: center; justify-items: center; gap: 16px; padding: 40px 24px; min-height: 300px; background: radial-gradient(115% 90% at 30% 20%, #221B12 0%, #14110D 52%, #0C0B0E 100%); }
-  .my-art figcaption { font: 500 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #C9BFAE; }
-  .my-mark { width: min(220px, 58vw); height: auto; }
-  .my-mark .say { opacity: .32; animation: my-say 3.6s ease-in-out infinite; }
-  .my-mark .say-2 { animation-delay: .22s; }
-  .my-mark .level rect { animation: my-level 1.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-  @keyframes my-say { 0%, 10% { opacity: .32; } 34% { opacity: 1; } 66% { opacity: .6; } 88%, 100% { opacity: .32; } }
-  @keyframes my-level { 0%, 100% { transform: scaleY(.35); } 50% { transform: scaleY(1); } }
-  .pg { margin-top: 18px; border-radius: 16px; overflow: hidden; border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--rule)); background: var(--surface); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "art" "body"; }
-  @media (min-width: 860px) { .pg { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "body art"; } }
-  .pg-body { grid-area: body; padding: clamp(20px, 3vw, 36px); display: grid; gap: 14px; align-content: center; }
-  .pg-body h3 { font: 650 clamp(1.9rem, 3.6vw, 2.7rem)/1 var(--display); letter-spacing: -.028em; margin: 4px 0 8px; }
-  .pg-body p:last-child { margin-bottom: 0; }
-  .pg-body ul { margin: 0; padding-left: 1.1em; }
-  .pg-body li { margin: 6px 0; }
-  .pg-prompt { font: 13px/1.6 var(--mono); background: var(--chip); border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .pg-prompt .dim { color: var(--muted); }
-  .pg-art { grid-area: art; margin: 0; display: grid; place-content: center; justify-items: center; gap: 14px; padding: 40px 24px; min-height: 300px; background: radial-gradient(120% 95% at 78% 18%, #3b2531 0%, #231a1c 45%, #17130f 100%); }
-  .pg-art figcaption { font: 500 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #CFC6B8; }
-  .pg-mark { width: min(230px, 60vw); height: auto; aspect-ratio: 1; color: #A69E94; animation: pg-color 7s ease-in-out -1.4s infinite; }
-  .pg-mark .pop { transform-box: view-box; transform-origin: 60px 60px; animation: pg-pop 7s ease-out -1.4s infinite; }
-  .pg-mark .frame { transform-box: view-box; transform-origin: 60px 60px; animation: pg-breathe 7s ease-in-out -1.4s infinite; }
-  .pg-mark .eyes-open { animation: pg-eyes-open 7s step-end -1.4s infinite; }
-  .pg-mark .eyes-wink { opacity: 0; animation: pg-eyes-wink 7s step-end -1.4s infinite; }
-  @keyframes pg-color { 0%, 12% { color: #A69E94; } 18%, 52% { color: #F2B441; } 57%, 84% { color: #5CC08A; } 92%, 100% { color: #A69E94; } }
-  @keyframes pg-breathe { 0%, 18% { transform: scale(1); } 26% { transform: scale(.9); } 35% { transform: scale(1); } 44% { transform: scale(.9); } 53%, 100% { transform: scale(1); } }
-  @keyframes pg-pop { 0%, 55% { transform: scale(1); } 59% { transform: scale(1.08); } 64%, 100% { transform: scale(1); } }
-  @keyframes pg-eyes-open { 0% { opacity: 1; } 56% { opacity: 0; } 86% { opacity: 1; } }
-  @keyframes pg-eyes-wink { 0% { opacity: 0; } 56% { opacity: 1; } 86% { opacity: 0; } }
-  @media (prefers-reduced-motion: reduce) {
-    .pg-mark { animation: none; color: #F2B441; }
-    .pg-mark .pop, .pg-mark .frame, .pg-mark .eyes-open, .pg-mark .eyes-wink { animation: none; }
-  }
-  .support { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 22px; padding: 28px; border-radius: 14px; border: 1px solid var(--rule); background: var(--surface); }
-  @media (min-width: 760px) { .support { grid-template-columns: minmax(0, 1fr) 200px; } }
-  .qr { background: #FFFDF7; border-radius: 12px; padding: 12px; width: 200px; max-width: 100%; justify-self: center; }
-  .qr img { width: 100%; height: auto; }
-
-  .foot { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .88rem; display: grid; gap: 8px; }
-  .foot p { max-width: 96ch; margin: 0; }
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -763,10 +491,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/aerial.webp" alt="Aerial preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Aerial</h3><span class="badge new">New</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/aerial/">Aerial</a></h3><span class="badge new">New</span></div>
         <p>Mission Control for Omarchy. Swipe up with three fingers and every window spreads out, live — and it follows your hand the whole way, so stopping half way leaves it half open. Type to narrow it, or drag a window onto another desktop.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-aerial --enable">Copy install</button>
+          <a href="/plugins/aerial/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-aerial">GitHub</a>
         </div>
       </div>
@@ -784,7 +513,7 @@ Press Enter for face, or type your password:</div>
         </svg>
       </div>
       <div class="card-body">
-        <div class="card-top"><h3>PenguID</h3><span class="badge new">New</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/omarchy-penguid/">PenguID</a></h3><span class="badge new">New</span></div>
         <p>Face unlock with the infrared camera on the lock screen, at sudo and in polkit prompts, with TPM-sealed face data and a penguin above every window that shows each step.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-penguid.git --enable">Copy install</button>
@@ -797,7 +526,7 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/mynah.webp" alt="Mynah preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Mynah</h3><span class="badge new">New</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/mynah/">Mynah</a></h3><span class="badge new">New</span></div>
         <p>Voice dictation on a key. Press it and talk; every time you pause, that sentence is transcribed on your own machine and typed into whatever window has focus, while a pill shows the spectrum of your voice.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-mynah.git --enable">Copy install</button>
@@ -810,10 +539,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/omagram.webp" alt="Omagram preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Omagram</h3><span class="badge review">In review</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/omagram/">Omagram</a></h3><span class="badge review">In review</span></div>
         <p>An unofficial Telegram client that lives in your desktop. Reply from the bar with voice, round video or stickers, and know who wrote by a sound of their own.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-omagram.git --enable">Copy install</button>
+          <a href="/plugins/omagram/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-omagram">GitHub</a>
         </div>
       </div>
@@ -822,10 +552,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/cockpit.webp" alt="Cockpit preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Cockpit</h3><span class="badge listed">Marketplace</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/cockpit/">Cockpit</a></h3><span class="badge listed">Marketplace</span></div>
         <p>One hub for what the machine is doing right now: AI sessions working or waiting for you, transfers with real progress, long jobs, dirty repos and pending updates.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-cockpit.git --enable">Copy install</button>
+          <a href="/plugins/cockpit/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-cockpit">GitHub</a>
         </div>
       </div>
@@ -834,10 +565,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/tactile.webp" alt="Tactile preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Tactile</h3><span class="badge listed">Marketplace</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/tactile/">Tactile</a></h3><span class="badge listed">Marketplace</span></div>
         <p>Tune your touchpad and mouse by feel: changes undo themselves unless you keep them, custom acceleration curves, gestures with a finger map, per-app settings and a live finger view.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-tactile.git --enable">Copy install</button>
+          <a href="/plugins/tactile/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-tactile">GitHub</a>
         </div>
       </div>
@@ -846,10 +578,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/barber.webp" alt="Barber preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Barber</h3><span class="badge listed">Marketplace</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/barber/">Barber</a></h3><span class="badge listed">Marketplace</span></div>
         <p>Edit the bar right on the bar: take widgets off, add, move and set them up in place, with undo and layouts that switch by themselves.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-barber.git --enable">Copy install</button>
+          <a href="/plugins/barber/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-barber">GitHub</a>
         </div>
       </div>
@@ -858,10 +591,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/emoji-picker.webp" alt="Emoji picker preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Emoji picker</h3><span class="badge listed">Marketplace</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/emoji-picker/">Emoji picker</a></h3><span class="badge listed">Marketplace</span></div>
         <p>Emoji, symbols, kaomoji and GIFs typed straight into the app you were using. It searches English, Ukrainian and Russian names at once.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-emoji-picker.git --enable">Copy install</button>
+          <a href="/plugins/emoji-picker/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-emoji-picker">GitHub</a>
         </div>
       </div>
@@ -870,10 +604,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/clipboard-shelf.webp" alt="Clipboard shelf preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Clipboard shelf</h3><span class="badge listed">Marketplace</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/clipboard-shelf/">Clipboard shelf</a></h3><span class="badge listed">Marketplace</span></div>
         <p>Pin the snippets you paste all day and keep them one keystroke away, next to your clipboard history.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-clipboard-shelf.git --enable">Copy install</button>
+          <a href="/plugins/clipboard-shelf/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-clipboard-shelf">GitHub</a>
         </div>
       </div>
@@ -882,10 +617,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/omalang.webp" alt="Omalang preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Omalang</h3><span class="badge listed">Marketplace</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/omalang/">Omalang</a></h3><span class="badge listed">Marketplace</span></div>
         <p>Remembers the keyboard layout for each app and restores it when you switch back. Left-click cycles, right-click assigns.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-omalang.git --enable">Copy install</button>
+          <a href="/plugins/omalang/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-omalang">GitHub</a>
         </div>
       </div>
@@ -894,10 +630,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/tile-blueprints.webp" alt="Tile blueprints preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Tile blueprints</h3><span class="badge listed">Marketplace</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/tile-blueprints/">Tile blueprints</a></h3><span class="badge listed">Marketplace</span></div>
         <p>Draw a tiling layout for each workspace, and apps open straight into their tile. A hand-arranged workspace becomes a blueprint in one key.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-tile-blueprints.git --enable">Copy install</button>
+          <a href="/plugins/tile-blueprints/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-tile-blueprints">GitHub</a>
         </div>
       </div>
@@ -906,10 +643,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/idle-dim.webp" alt="Idle dim preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Idle dim</h3><span class="badge listed">Marketplace</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/idle-dim/">Idle dim</a></h3><span class="badge listed">Marketplace</span></div>
         <p>Dims the screen after a while without input and brings your brightness back on the next key: the step Omarchy's idle handling skips.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-idle-dim.git --enable">Copy install</button>
+          <a href="/plugins/idle-dim/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-idle-dim">GitHub</a>
         </div>
       </div>
@@ -918,10 +656,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/keyboard-cleaner.webp" alt="Keyboard cleaner preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>Keyboard cleaner</h3><span class="badge listed">Marketplace</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/keyboard-cleaner/">Keyboard cleaner</a></h3><span class="badge listed">Marketplace</span></div>
         <p>Switch every key off while you wipe your keyboard and touchpad. A themed card counts down; hold a click on the ring to finish early.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-keyboard-cleaner.git --enable">Copy install</button>
+          <a href="/plugins/keyboard-cleaner/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-keyboard-cleaner">GitHub</a>
         </div>
       </div>
@@ -930,10 +669,11 @@ Press Enter for face, or type your password:</div>
     <article class="card">
       <img src="assets/previews/dgpu-status.webp" alt="dGPU status preview card" width="720" height="405" loading="lazy">
       <div class="card-body">
-        <div class="card-top"><h3>dGPU status</h3><span class="badge listed">Marketplace</span></div>
+        <div class="card-top"><h3><a class="stretch" href="/plugins/dgpu-status/">dGPU status</a></h3><span class="badge listed">Marketplace</span></div>
         <p>Is the NVIDIA GPU asleep or awake? A bar widget that tells you at a glance, with gpuwho to see what is keeping it up.</p>
         <div class="actions">
           <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-dgpu-status.git --enable">Copy install</button>
+          <a href="/plugins/dgpu-status/">Page</a>
           <a href="https://github.com/ReidenXerx/omarchy-dgpu-status">GitHub</a>
         </div>
       </div>

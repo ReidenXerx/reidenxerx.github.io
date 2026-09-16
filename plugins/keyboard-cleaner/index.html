@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Keyboard cleaner — Omarchy plugin · DuduPhudu</title>
+<meta name="description" content="Switches every key off while you wipe the keyboard. A full-screen card in your theme counts down while you clean. Hold a click on the ring for three seconds to end it early.">
+<link rel="canonical" href="https://duduphudu.app/plugins/keyboard-cleaner/">
+<meta name="author" content="DuduPhudu">
+<meta name="theme-color" content="#F2F3F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1215" media="(prefers-color-scheme: dark)">
+<meta property="og:site_name" content="DuduPhudu">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en">
+<meta property="og:title" content="Keyboard cleaner — Switches every key off while you wipe the keyboard.">
+<meta property="og:description" content="A full-screen card in your theme counts down while you clean. Hold a click on the ring for three seconds to end it early.">
+<meta property="og:url" content="https://duduphudu.app/plugins/keyboard-cleaner/">
+<meta property="og:image" content="https://duduphudu.app/assets/previews/keyboard-cleaner-wide.webp">
+<meta property="og:image:width" content="1440">
+<meta property="og:image:height" content="810">
+<meta property="og:image:alt" content="Keyboard cleaner preview card">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Keyboard cleaner — Switches every key off while you wipe the keyboard.">
+<meta name="twitter:description" content="A full-screen card in your theme counts down while you clean. Hold a click on the ring for three seconds to end it early.">
+<meta name="twitter:image" content="https://duduphudu.app/assets/previews/keyboard-cleaner-wide.webp">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Keyboard cleaner",
+  "url": "https://duduphudu.app/plugins/keyboard-cleaner/",
+  "description": "Switches every key off while you wipe the keyboard. A full-screen card in your theme counts down while you clean. Hold a click on the ring for three seconds to end it early.",
+  "applicationCategory": "DesktopEnhancementApplication",
+  "operatingSystem": "Linux",
+  "license": "https://opensource.org/license/mit",
+  "codeRepository": "https://github.com/ReidenXerx/omarchy-keyboard-cleaner",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "DuduPhudu", "url": "https://duduphudu.app/" }
+}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <a class="back" href="/#plugins"><span>&larr;</span> All plugins</a>
+  <a class="brand" href="/">Dudu<span class="two">Phudu</span></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="/#flagships">Flagships</a>
+    <a href="/#plugins">Omarchy plugins</a>
+    <a href="https://github.com/ReidenXerx/omarchy-keyboard-cleaner">GitHub</a>
+    <a href="/#support">Support</a>
+  </nav>
+</header>
+
+<main class="detail">
+
+  <div class="detail-head">
+    <p class="eyebrow">Utility · Full-screen</p>
+    <h1>Keyboard cleaner<span class="badge listed">On the marketplace</span></h1>
+    <p class="tagline">Switches every key off while you wipe the keyboard.</p>
+    <p class="lede">A full-screen card in your theme counts down while you clean. Hold a click on the ring for three seconds to end it early.</p>
+    <div class="actions">
+      <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-keyboard-cleaner.git --enable">Copy install</button>
+      <a class="button" href="https://github.com/ReidenXerx/omarchy-keyboard-cleaner">GitHub</a>
+    </div>
+  </div>
+
+  <div class="shot">
+    <img src="/assets/previews/keyboard-cleaner-wide.webp" alt="Keyboard cleaner preview card" width="1440" height="810">
+  </div>
+
+  <section aria-labelledby="only-h">
+    <p class="eyebrow kicker">What only Keyboard cleaner does</p>
+    <h2 id="only-h">Why this one</h2>
+    <ul class="only">
+      <li><b>Every key is off.</b><span>Letters, Super shortcuts, media, brightness and power keys — not a screensaver you can type through.</span></li>
+      <li><b>The touchpad and mouse do nothing.</b><span>Clicks, scrolls and drags land on the card instead of on your work.</span></li>
+      <li><b>The display stays awake.</b><span>The card shows on every monitor with the time left, so you can see what you are doing.</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="get-h">
+    <p class="eyebrow kicker">Getting it</p>
+    <h2 id="get-h">One command</h2>
+    <div class="actions">
+      <button class="copy" type="button" data-copy="omarchy plugin add https://github.com/ReidenXerx/omarchy-keyboard-cleaner.git --enable">omarchy plugin add https://github.com/ReidenXerx/omarchy-keyboard-cleaner.git --enable</button>
+    </div>
+    <p class="lede">Then restart the shell with <code>omarchy-restart-shell</code>. Licensed MIT;
+    remove it any time with <code>omarchy plugin remove</code>.</p>
+  </section>
+
+  <div class="pagefoot">
+    <a class="back" href="/#plugins"><span>&larr;</span> All plugins</a>
+    <span>Free and open source. <a href="https://donatello.to/DuduPhudu">Support its development</a>.</span>
+  </div>
+
+</main>
+
+<script>
+  document.querySelectorAll("[data-copy]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var label = button.textContent
+      var done = function (text) {
+        button.textContent = text
+        setTimeout(function () { button.textContent = label }, 1600)
+      }
+      if (!navigator.clipboard) return done("Copy failed")
+      navigator.clipboard.writeText(button.dataset.copy).then(
+        function () { done("Copied") }, function () { done("Copy failed") })
+    })
+  })
+</script>
+</body>
+</html>
