@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DuduPhudu · Event Horizon, bearing, whiz and Omarchy plugins</title>
-<meta name="description" content="Event Horizon for Vortex, bearing for AI coding agents, whiz transcription, PenguID face unlock and a dozen Omarchy plugins, by DuduPhudu. Free on Nexus Mods, npm and GitHub.">
+<title>DuduPhudu · Event Horizon, bearing, whiz, Mynah and Omarchy plugins</title>
+<meta name="description" content="Event Horizon for Vortex, bearing for AI coding agents, whiz transcription, Mynah voice dictation, PenguID face unlock and a dozen Omarchy plugins, by DuduPhudu. Free on Nexus Mods, npm and GitHub.">
 <meta name="color-scheme" content="light dark">
-<meta property="og:title" content="DuduPhudu · Event Horizon, bearing, whiz and Omarchy plugins">
-<meta property="og:description" content="Event Horizon for Vortex, bearing for AI coding agents, whiz transcription, PenguID face unlock and a dozen Omarchy plugins. Free on Nexus Mods, npm and GitHub.">
+<meta property="og:title" content="DuduPhudu · Event Horizon, bearing, whiz, Mynah and Omarchy plugins">
+<meta property="og:description" content="Event Horizon for Vortex, bearing for AI coding agents, whiz transcription, Mynah voice dictation, PenguID face unlock and a dozen Omarchy plugins. Free on Nexus Mods, npm and GitHub.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316191D'/%3E%3Ctext x='32' y='43' font-family='Arial, sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23F2B441'%3EDP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -205,6 +205,25 @@
   .t-c { color: #d2a8ff; }
   .t-d { color: #56d4dd; }
   /* PenguID: text beside the same animated penguin as its own page, starting mid-scan so the resting frame is amber. */
+  /* Mynah: the PenguID block mirrored, in the bird's own jet and saffron. */
+  .my { margin-top: 18px; border-radius: 16px; overflow: hidden; border: 1px solid color-mix(in oklab, #F5B301 32%, var(--rule)); background: var(--surface); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "art" "body"; }
+  @media (min-width: 860px) { .my { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "art body"; } }
+  .my-body { grid-area: body; padding: clamp(20px, 3vw, 36px); display: grid; gap: 14px; align-content: center; }
+  .my-body h3 { font: 650 clamp(1.9rem, 3.6vw, 2.7rem)/1 var(--display); letter-spacing: -.028em; margin: 4px 0 8px; }
+  .my-body ul { margin: 0; padding-left: 1.1em; }
+  .my-body li { margin: 6px 0; }
+  .my-body p:last-child { margin-bottom: 0; }
+  .my-line { font: 13px/1.7 var(--mono); background: var(--chip); border-radius: 8px; padding: 10px 12px; overflow-wrap: anywhere; }
+  .my-line .dim { color: var(--muted); }
+  .my-line .typed { color: var(--ok); }
+  .my-art { grid-area: art; margin: 0; display: grid; place-content: center; justify-items: center; gap: 16px; padding: 40px 24px; min-height: 300px; background: radial-gradient(115% 90% at 30% 20%, #221B12 0%, #14110D 52%, #0C0B0E 100%); }
+  .my-art figcaption { font: 500 12px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #C9BFAE; }
+  .my-mark { width: min(220px, 58vw); height: auto; }
+  .my-mark .say { opacity: .32; animation: my-say 3.6s ease-in-out infinite; }
+  .my-mark .say-2 { animation-delay: .22s; }
+  .my-mark .level rect { animation: my-level 1.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes my-say { 0%, 10% { opacity: .32; } 34% { opacity: 1; } 66% { opacity: .6; } 88%, 100% { opacity: .32; } }
+  @keyframes my-level { 0%, 100% { transform: scaleY(.35); } 50% { transform: scaleY(1); } }
   .pg { margin-top: 18px; border-radius: 16px; overflow: hidden; border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--rule)); background: var(--surface); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "art" "body"; }
   @media (min-width: 860px) { .pg { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "body art"; } }
   .pg-body { grid-area: body; padding: clamp(20px, 3vw, 36px); display: grid; gap: 14px; align-content: center; }
@@ -453,6 +472,39 @@ Press Enter for face, or type your password:</div>
       </svg>
       <figcaption>Looking · recognized</figcaption>
     </figure>
+  </article>
+
+  <article class="my" id="mynah" aria-labelledby="mynah-h">
+    <figure class="my-art">
+      <svg class="my-mark" viewBox="0 0 300 256" role="img" aria-label="The Mynah mark: the bird in profile, beak open mid-word">
+        <path fill-rule="evenodd" fill="#FBF7EF" d="M92.01 41.01 C85.99 29.00 88.01 18.00 97.00 11.01 C98.00 21.99 102.99 30.00 112.00 35.00 Z M103.99 39.99 C147.99 39.99 181.99 71.99 181.99 114.00 C181.99 122.01 180.99 130.00 178.00 137.01 L199.99 141.00 C206.00 142.00 208.00 148.99 203.01 153.01 L173.00 178.00 C161.00 188.01 145.00 194.00 128.00 194.00 C82.00 194.00 46.00 159.00 46.00 114.00 C46.00 68.99 58.01 39.99 103.99 39.99 Z M174.00 96.00 L236.01 101.99 C240.00 101.99 242.00 107.01 239.00 110.00 L225.00 122.01 C223.00 124.01 220.01 124.01 218.01 123.01 L174.00 108.01 Z M176.00 122.01 L227.99 130.00 C231.99 131.00 231.99 135.99 227.99 137.01 L197.99 145.00 C195.99 146.00 194.00 145.00 193.00 143.00 L176.00 128.00 Z M130 88a11 11 0 1 0 22 0a11 11 0 1 0 -22 0z"/>
+        <g fill="none" stroke="#F5B301" stroke-width="9" stroke-linecap="round">
+          <path class="say" d="M250 96c7 11 7 26 0 37"/>
+          <path class="say say-2" d="M272 82c11 17 11 42 0 59"/>
+        </g>
+        <g class="level" transform="translate(58 196)"><rect x="34" y="6" width="8" height="28" rx="4" fill="#F5B301" style="animation-delay: -0.00s"/><rect x="51" y="6" width="8" height="28" rx="4" fill="#F5B301" style="animation-delay: -0.19s"/><rect x="68" y="6" width="8" height="28" rx="4" fill="#F5B301" style="animation-delay: -0.38s"/><rect x="85" y="6" width="8" height="28" rx="4" fill="#F5B301" style="animation-delay: -0.57s"/><rect x="102" y="6" width="8" height="28" rx="4" fill="#F5B301" style="animation-delay: -0.76s"/><rect x="119" y="6" width="8" height="28" rx="4" fill="#F5B301" style="animation-delay: -0.95s"/><rect x="136" y="6" width="8" height="28" rx="4" fill="#F5B301" style="animation-delay: -1.14s"/></g>
+      </svg>
+      <figcaption>Listening · typed</figcaption>
+    </figure>
+    <div class="my-body">
+      <div>
+        <p class="label">Voice dictation · macOS, Linux next</p>
+        <h3 id="mynah-h">mynah</h3>
+        <p class="flag-tagline">Say it. It types where you are.</p>
+        <p>Press a key and talk, and the words land in whatever window has focus &mdash; a commit message, a chat, a form. Named after the bird that says back what it hears.</p>
+      </div>
+      <div class="my-line"><span class="dim">you say</span>  the fee is computed <span class="dim">·</span> on gross,<br><span class="dim">it types</span>  <span class="typed">while you are still talking, at each pause</span></div>
+      <ul>
+        <li><strong>Text arrives in the gaps,</strong> not at the end: every pause closes an utterance and types it.</li>
+        <li><strong>Local by definition:</strong> speech is transcribed on your own hardware, with no account, no API key and nothing to send.</li>
+        <li>When a sentence gets cut in half, a test says so &mdash; the segmentation thresholds are pinned by a corpus of recordings.</li>
+      </ul>
+      <div class="actions">
+        <a class="button primary" href="/mynah/">Discover Mynah</a>
+        <button class="copy" type="button" data-copy="pipx install git+https://github.com/ReidenXerx/mynah.git">Copy install</button>
+        <a href="https://github.com/ReidenXerx/mynah">GitHub</a>
+      </div>
+    </div>
   </article>
 </section>
 
