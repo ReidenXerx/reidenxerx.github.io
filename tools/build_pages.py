@@ -56,6 +56,11 @@ def page(p: dict) -> str:
 
     note = f'\n    <p class="note">{esc(p["notes"])}</p>' if p["notes"] else ""
 
+    market = ""
+    if p.get("listing"):
+        market = ('\n      <a class="button" href="https://plugins.omarchy.org/plugin.html?id='
+                  + p["listing"] + '">On the marketplace</a>')
+
     ld = f"""{{
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -123,7 +128,7 @@ def page(p: dict) -> str:
     <p class="lede">{esc(p['lede'])}</p>
     <div class="actions">
       <button class="copy" type="button" data-copy="{esc(p['install'])}">Copy install</button>
-      <a class="button" href="{p['repo']}">GitHub</a>
+      <a class="button" href="{p['repo']}">GitHub</a>{market}
     </div>
   </div>
 

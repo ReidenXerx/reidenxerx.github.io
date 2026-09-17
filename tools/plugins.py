@@ -82,6 +82,7 @@ PLUGINS = [
     },
     {
         "slug": "cockpit",
+        "listing": "reidenxerx.cockpit",
         "name": "Cockpit",
         "eyebrow": "Status hub · Bar widget",
         "badge": ("listed", "On the marketplace"),
@@ -107,6 +108,7 @@ PLUGINS = [
     },
     {
         "slug": "tactile",
+        "listing": "reidenxerx.tactile",
         "name": "Tactile",
         "eyebrow": "Input tuning · Touchpad and mouse",
         "badge": ("listed", "On the marketplace"),
@@ -137,6 +139,7 @@ PLUGINS = [
     },
     {
         "slug": "barber",
+        "listing": "reidenxerx.barber",
         "name": "Barber",
         "eyebrow": "Bar editor · Layouts",
         "badge": ("listed", "On the marketplace"),
@@ -164,6 +167,7 @@ PLUGINS = [
     },
     {
         "slug": "emoji-picker",
+        "listing": "reidenxerx.emoji-picker",
         "name": "Emoji picker",
         "eyebrow": "Overlay · Emoji, symbols, GIFs",
         "badge": ("listed", "On the marketplace"),
@@ -190,6 +194,7 @@ PLUGINS = [
     },
     {
         "slug": "clipboard-shelf",
+        "listing": "reidenxerx.clipboard-shelf",
         "name": "Clipboard shelf",
         "eyebrow": "Clipboard · Bar widget",
         "badge": ("listed", "On the marketplace"),
@@ -216,6 +221,7 @@ PLUGINS = [
     },
     {
         "slug": "omalang",
+        "listing": "reidenxerx.keyboard-layout-per-app",
         "name": "Omalang",
         "eyebrow": "Keyboard layout · Bar widget",
         "badge": ("listed", "On the marketplace"),
@@ -241,6 +247,7 @@ PLUGINS = [
     },
     {
         "slug": "tile-blueprints",
+        "listing": "reidenxerx.tile-blueprints",
         "name": "Tile blueprints",
         "eyebrow": "Tiling · Per-workspace layouts",
         "badge": ("listed", "On the marketplace"),
@@ -265,6 +272,7 @@ PLUGINS = [
     },
     {
         "slug": "idle-dim",
+        "listing": "reidenxerx.idle-dim",
         "name": "Idle dim",
         "eyebrow": "Power · Bar widget",
         "badge": ("listed", "On the marketplace"),
@@ -289,6 +297,7 @@ PLUGINS = [
     },
     {
         "slug": "keyboard-cleaner",
+        "listing": "reidenxerx.keyboard-cleaner",
         "name": "Keyboard cleaner",
         "eyebrow": "Utility · Full-screen",
         "badge": ("listed", "On the marketplace"),
@@ -313,6 +322,7 @@ PLUGINS = [
     },
     {
         "slug": "dgpu-status",
+        "listing": "reidenxerx.dgpu-status",
         "name": "dGPU status",
         "eyebrow": "Hardware · Bar widget",
         "badge": ("listed", "On the marketplace"),
