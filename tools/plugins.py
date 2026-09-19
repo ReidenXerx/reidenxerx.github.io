@@ -8,6 +8,48 @@ SITE = "https://duduphudu.app"
 
 PLUGINS = [
     {
+        "slug": "varta",
+        "name": "Varta",
+        "eyebrow": "Air raid alerts · Bar and screen",
+        "badge": ("new", "New"),
+        "tagline": "An air raid alert watch that says when it has gone blind.",
+        "lede": "Your oblast in the bar, and a band across every screen the moment it goes under "
+                "alert — built for the case where you are at the desk in headphones.",
+        "only": [
+            ("It tells you when it has stopped watching.",
+             "A monitor that cannot reach its source looks exactly like one reporting calm: the same quiet "
+             "shield, the same silence. That is the failure that gets somebody hurt, so “not watching” is "
+             "drawn in the warning colour and struck through, never greyed out and quietly forgotten."),
+            ("It notices a feed that has frozen, not just one that has stopped answering.",
+             "Staleness is timed separately from the request succeeding, so a source still returning a "
+             "cheerful 200 over a reading from an hour ago is caught. One really was, during development."),
+            ("It does not cry wolf.",
+             "A watcher restarting after a settings change says “reconnecting”, not “not watching”, and "
+             "closing the lid is recognised as sleep rather than an outage. A warning that fires when "
+             "nothing is wrong stops being believed."),
+            ("Other oblasts are news, not alarm.",
+             "Watch where your family live: it shows in the bar and sounds once, quietly, and never puts "
+             "the band across your screen. Only where you are does that."),
+            ("The rehearsal is unmistakably a rehearsal.",
+             "It runs the whole path — band, sound, repeat — marked ТЕСТ throughout, because a drill "
+             "nobody can tell from the real thing is its own kind of harm."),
+        ],
+        "use": [
+            ("Click the shield", "Everything it knows, and everything you can do about it"),
+            ("Tick a region, Save", "Watch somewhere else as well as where you are"),
+            ("Find my region", "Detect your oblast again, from two sources that must agree"),
+            ("Test the alert", "Rehearse the whole thing, clearly marked"),
+            ("The × on the band", "Put it away for this alert, not for good"),
+        ],
+        "notes": "Unofficial, and oblast-wide: a companion to the official app and to the sirens outside, "
+                 "never a replacement. It reads one public feed once a minute and writes nothing but its "
+                 "own entry in your shell config. Needs paplay for the sound; nothing else.",
+        "repo": "https://github.com/ReidenXerx/omarchy-varta",
+        "install": "omarchy plugin add https://github.com/ReidenXerx/omarchy-varta.git --enable",
+        "preview": "assets/previews/varta.webp",
+        "licence": "MIT",
+    },
+    {
         "slug": "aerial",
         "name": "Aerial",
         "eyebrow": "Window overview · Touchpad",

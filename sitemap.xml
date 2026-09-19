@@ -26,63 +26,68 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://duduphudu.app/plugins/varta/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://duduphudu.app/plugins/aerial/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/omagram/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/cockpit/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/tactile/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/barber/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/emoji-picker/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/clipboard-shelf/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/omalang/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/tile-blueprints/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/idle-dim/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/keyboard-cleaner/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://duduphudu.app/plugins/dgpu-status/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
