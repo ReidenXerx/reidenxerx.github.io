@@ -11,7 +11,8 @@ PLUGINS = [
         "slug": "varta",
         "name": "Varta",
         "eyebrow": "Air raid alerts · Bar and screen",
-        "badge": ("new", "New"),
+        "badge": ("listed", "On the marketplace"),
+        "listing": "reidenxerx.varta",
         "tagline": "An air raid alert watch that says when it has gone blind.",
         "lede": "Your oblast in the bar, and a band across every screen the moment it goes under "
                 "alert — built for the case where you are at the desk in headphones.",
@@ -53,7 +54,8 @@ PLUGINS = [
         "slug": "aerial",
         "name": "Aerial",
         "eyebrow": "Window overview · Touchpad",
-        "badge": ("new", "New"),
+        "badge": ("listed", "On the marketplace"),
+        "listing": "reidenxerx.aerial",
         "tagline": "Mission Control for Omarchy, attached to your fingers.",
         "lede": "Swipe up with three fingers and every window on the workspace spreads out, live, "
                 "with your desktops along the top. Let go half way and it goes back.",
@@ -96,7 +98,8 @@ PLUGINS = [
         "slug": "omagram",
         "name": "Omagram",
         "eyebrow": "Telegram client · Bar and window",
-        "badge": ("review", "In review"),
+        "badge": ("listed", "On the marketplace"),
+        "listing": "reidenxerx.omagram",
         "tagline": "The unofficial Telegram client that lives in your bar, not in another window.",
         "lede": "Reply from the bar without leaving what you were doing, with your theme's colours and the "
                 "keyboard first everywhere.",
