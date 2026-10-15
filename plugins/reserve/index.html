@@ -76,12 +76,13 @@
 <h2 id="only-h">Why this one</h2>
 <ul class="only">
 <li><b>Usage by app, on a laptop.</b><span>Each app's share of the battery, worked out from the CPU and graphics time it used, the way phones do it, and labelled as an estimate because that is what it is. The screen and the idle system get their own line.</span></li>
-<li><b>It names the cause.</b><span>A graphics card left awake on battery, a night asleep that drained more than it should, one app that took most of the charge. Each comes with what to do about it.</span></li>
-<li><b>Measuring never costs you battery.</b><span>It never wakes the dedicated GPU to ask how it is, and its once-a-minute sampler takes about 15 to 25 ms of CPU a minute.</span></li>
+<li><b>It names the cause.</b><span>A graphics card left awake on battery, a night asleep that drained more than it should, one app that took most of the charge, each said in plain words.</span></li>
+<li><b>Measuring never costs you battery.</b><span>It never wakes the dedicated GPU to ask how it is, and its once-a-minute sampler takes about 40 ms of CPU a minute.</span></li>
+<li><b>It sees a charger that is not enough.</b><span>On battery means the battery is discharging, so a game that outruns a small USB-C charger is counted as the drain it is, not hidden behind &ldquo;plugged in&rdquo;.</span></li>
 <li><b>Health over months, not just today.</b><span>Capacity against the battery's design, cycles and temperature, with a daily log, so slow wear is visible long before it bites.</span></li>
 <li><b>Charging, explained.</b><span>The charger's real wattage over USB-C, and whether a charge limit is holding the battery where it is. A charger too small for a gaming GPU says so.</span></li>
 </ul>
-<p class="note">No root, no account, no network. History stays on your laptop: 30 days of minutes and a year of hours, in a private folder.</p>
+<p class="note">No root, no account, no network. History stays on your laptop: 30 days of samples and app activity, about 5 MB, and a daily capacity reading for the health trend, in a folder only you can read.</p>
 </section>
 
 <section aria-labelledby="using-h">
@@ -93,7 +94,7 @@
 <tbody>
 <tr><td><kbd>Click the battery in the bar</kbd></td><td>Today's chart, usage by app, health and charging</td></tr>
 <tr><td><kbd>Since unplugged or Today</kbd></td><td>Battery use for the run on battery, or for the whole day</td></tr>
-<tr><td><kbd>A red dot</kbd></td><td>Something worth knowing, and the one thing to change</td></tr>
+<tr><td><kbd>A dot in the panel</kbd></td><td>Something worth knowing, in plain words</td></tr>
 </tbody>
 </table>
 </div>
