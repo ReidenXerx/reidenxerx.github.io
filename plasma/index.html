@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>On KDE Plasma · DuduPhudu</title>
+<meta name="description" content="Nine of DuduPhudu&#x27;s Omarchy plugins also run on KDE Plasma 6 as widgets: screen time, battery, air raid alerts, the dGPU, Night Light, a status hub, emoji, dictation and a keyboard cleaner.">
+<link rel="canonical" href="https://duduphudu.app/plasma/">
+<meta name="author" content="DuduPhudu">
+<meta name="theme-color" content="#F2F3F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1215" media="(prefers-color-scheme: dark)">
+<meta property="og:site_name" content="DuduPhudu">
+<meta property="og:type" content="website">
+<meta property="og:title" content="On KDE Plasma — nine widgets from DuduPhudu">
+<meta property="og:description" content="Nine of DuduPhudu&#x27;s Omarchy plugins also run on KDE Plasma 6 as widgets: screen time, battery, air raid alerts, the dGPU, Night Light, a status hub, emoji, dictation and a keyboard cleaner.">
+<meta property="og:url" content="https://duduphudu.app/plasma/">
+<meta property="og:image" content="https://duduphudu.app/assets/previews/plasma-hero.webp">
+<meta property="og:image:width" content="1400">
+<meta property="og:image:height" content="860">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="back" href="/#plugins"><span>&larr;</span> All plugins</a>
+  <a class="brand" href="/">Dudu<span class="two">Phudu</span></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="/#flagships">Flagships</a>
+    <a href="/#plugins">Omarchy plugins</a>
+    <a href="/#support">Support</a>
+  </nav>
+</header>
+
+<main class="detail">
+
+  <div class="detail-head">
+    <p class="eyebrow">KDE Plasma 6</p>
+    <h1>On Plasma too<span class="badge testing">In testing</span></h1>
+    <p class="tagline">Nine of the Omarchy plugins, as Plasma widgets.</p>
+    <p class="lede">The same work underneath: the same helpers, recorders and samplers, with a panel or tray widget in
+    Plasma's own controls and colours on top. Where Plasma already does something well, they work with it instead of
+    beside it: Dusk drives Plasma's Night Light, Reserve sits next to its battery widget. They are being tested on a
+    real Plasma desktop now, and install from each repository's <code>plasma</code> branch until they are on the KDE
+    Store.</p>
+    <div class="actions">
+      <button class="copy" type="button" data-copy="mkdir -p ~/plasma-widgets &amp;&amp; cd ~/plasma-widgets &amp;&amp; for w in hourglass reserve varta dgpu-status dusk cockpit emoji-picker keyboard-cleaner mynah; do git clone -q -b plasma https://github.com/ReidenXerx/omarchy-$w.git &amp;&amp; (cd omarchy-$w &amp;&amp; tools/build-plasma &gt;/dev/null &amp;&amp; kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.$w); done">Copy: install all nine</button>
+    </div>
+  </div>
+
+  <figure class="figure">
+    <div class="shot">
+      <img src="/assets/previews/plasma-hero.webp" alt="Hourglass open from the Plasma panel, showing an example day: time by hour, by category and by app, with Firefox's sites listed" width="1400" height="860">
+    </div>
+    <figcaption class="caption">Hourglass on Plasma 6, open from the panel, with an example day. The other eight sit beside it in the panel and the tray.</figcaption>
+  </figure>
+
+  <section aria-labelledby="widgets-h">
+    <p class="eyebrow kicker">The widgets</p>
+    <h2 id="widgets-h">What each one is on Plasma</h2>
+    <div class="grid">
+    <article class="card" id="hourglass">
+      <div class="card-body">
+        <div class="card-top"><h3><a class="stretch" href="/plugins/hourglass/">Hourglass</a></h3><span class="badge testing">In testing</span></div>
+        <p>Plasma&#x27;s task manager says which app is in front; a small recorder service on your session bus keeps the clock and asks Plasma how long you have been idle. One press of Start recording sets it up.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="git clone -b plasma https://github.com/ReidenXerx/omarchy-hourglass.git &amp;&amp; cd omarchy-hourglass &amp;&amp; tools/build-plasma &amp;&amp; kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.hourglass">Copy Plasma install</button>
+          <a href="/plugins/hourglass/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-hourglass/tree/plasma">plasma branch</a>
+        </div>
+      </div>
+    </article>
+    <article class="card" id="reserve">
+      <div class="card-body">
+        <div class="card-top"><h3><a class="stretch" href="/plugins/reserve/">Reserve</a></h3><span class="badge testing">In testing</span></div>
+        <p>Fits the panel or the system tray beside Plasma&#x27;s own battery widget; the level comes from Plasma&#x27;s power management, the history from the same sampler.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="git clone -b plasma https://github.com/ReidenXerx/omarchy-reserve.git &amp;&amp; cd omarchy-reserve &amp;&amp; tools/build-plasma &amp;&amp; kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.reserve">Copy Plasma install</button>
+          <a href="/plugins/reserve/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-reserve/tree/plasma">plasma branch</a>
+        </div>
+      </div>
+    </article>
+    <article class="card" id="varta">
+      <div class="card-body">
+        <div class="card-top"><h3><a class="stretch" href="/plugins/varta/">Varta</a></h3><span class="badge testing">In testing</span></div>
+        <p>The band is a strip Plasma keeps above everything, full-screen video included, and alerts, all-clears and a lost feed are Plasma notifications too; the alert one stays until you dismiss it.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="git clone -b plasma https://github.com/ReidenXerx/omarchy-varta.git &amp;&amp; cd omarchy-varta &amp;&amp; tools/build-plasma &amp;&amp; kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.varta">Copy Plasma install</button>
+          <a href="/plugins/varta/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-varta/tree/plasma">plasma branch</a>
+        </div>
+      </div>
+    </article>
+    <article class="card" id="dgpu-status">
+      <div class="card-body">
+        <div class="card-top"><h3><a class="stretch" href="/plugins/dgpu-status/">dGPU status</a></h3><span class="badge testing">In testing</span></div>
+        <p>An icon in the panel or the tray that is muted while the card sleeps, and gpuwho&#x27;s list in its popup. Hidden on computers without an NVIDIA card.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="git clone -b plasma https://github.com/ReidenXerx/omarchy-dgpu-status.git &amp;&amp; cd omarchy-dgpu-status &amp;&amp; tools/build-plasma &amp;&amp; kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.dgpu-status">Copy Plasma install</button>
+          <a href="/plugins/dgpu-status/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-dgpu-status/tree/plasma">plasma branch</a>
+        </div>
+      </div>
+    </article>
+    <article class="card" id="dusk">
+      <div class="card-body">
+        <div class="card-top"><h3><a class="stretch" href="/plugins/dusk/">Dusk</a></h3><span class="badge testing">In testing</span></div>
+        <p>A companion to Plasma&#x27;s own Night Light rather than a second one: true colour for the apps you name or any fullscreen one, off until morning, presets you can preview, and the night on a dial.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="git clone -b plasma https://github.com/ReidenXerx/omarchy-dusk.git &amp;&amp; cd omarchy-dusk &amp;&amp; tools/build-plasma &amp;&amp; kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.dusk">Copy Plasma install</button>
+          <a href="/plugins/dusk/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-dusk/tree/plasma">plasma branch</a>
+        </div>
+      </div>
+    </article>
+    <article class="card" id="cockpit">
+      <div class="card-body">
+        <div class="card-top"><h3><a class="stretch" href="/plugins/cockpit/">Cockpit</a></h3><span class="badge testing">In testing</span></div>
+        <p>The same hub and providers, your own included. Chats and running sessions come from Claude Code&#x27;s own records; terminals and folders open in Konsole, Dolphin or your defaults.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="git clone -b plasma https://github.com/ReidenXerx/omarchy-cockpit.git &amp;&amp; cd omarchy-cockpit &amp;&amp; tools/build-plasma &amp;&amp; kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.cockpit">Copy Plasma install</button>
+          <a href="/plugins/cockpit/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-cockpit/tree/plasma">plasma branch</a>
+        </div>
+      </div>
+    </article>
+    <article class="card" id="emoji-picker">
+      <div class="card-body">
+        <div class="card-top"><h3><a class="stretch" href="/plugins/emoji-picker/">Emoji picker</a></h3><span class="badge testing">In testing</span></div>
+        <p>A popup on the key you give it. Picks are typed by pasting through Plasma&#x27;s remote-input permission, which it asks for once; GIFs go as their link.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="git clone -b plasma https://github.com/ReidenXerx/omarchy-emoji-picker.git &amp;&amp; cd omarchy-emoji-picker &amp;&amp; tools/build-plasma &amp;&amp; kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.emoji-picker">Copy Plasma install</button>
+          <a href="/plugins/emoji-picker/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-emoji-picker/tree/plasma">plasma branch</a>
+        </div>
+      </div>
+    </article>
+    <article class="card" id="keyboard-cleaner">
+      <div class="card-body">
+        <div class="card-top"><h3><a class="stretch" href="/plugins/keyboard-cleaner/">Keyboard cleaner</a></h3><span class="badge testing">In testing</span></div>
+        <p>Switches off the keyboards KWin knows, never the touchpad or mouse, with the same four ways back, and switches on any keyboard left off at your next login.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="git clone -b plasma https://github.com/ReidenXerx/omarchy-keyboard-cleaner.git &amp;&amp; cd omarchy-keyboard-cleaner &amp;&amp; tools/build-plasma &amp;&amp; kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.keyboard-cleaner">Copy Plasma install</button>
+          <a href="/plugins/keyboard-cleaner/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-keyboard-cleaner/tree/plasma">plasma branch</a>
+        </div>
+      </div>
+    </article>
+    <article class="card" id="mynah">
+      <div class="card-body">
+        <div class="card-top"><h3><a class="stretch" href="/mynah/">Mynah</a></h3><span class="badge testing">In testing</span></div>
+        <p>The bird in the panel, a pill while you speak, and its own shortcut. It types by pasting through Plasma&#x27;s remote-input permission; what you dictate passes through Plasma&#x27;s clipboard history.</p>
+        <div class="actions">
+          <button class="copy" type="button" data-copy="git clone -b plasma https://github.com/ReidenXerx/omarchy-mynah.git &amp;&amp; cd omarchy-mynah &amp;&amp; tools/build-plasma &amp;&amp; kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.mynah">Copy Plasma install</button>
+          <a href="/mynah/">Page</a>
+          <a href="https://github.com/ReidenXerx/omarchy-mynah/tree/plasma">plasma branch</a>
+        </div>
+      </div>
+    </article>
+    </div>
+    <p class="note">After installing, right click the panel, choose Add or Manage Widgets, and drag the widget onto the
+    panel or into the system tray. They need Plasma 6 on Wayland, Python 3 and, for some, <code>python-gobject</code>
+    and <code>notify-send</code>; each page says which.</p>
+  </section>
+
+  <section aria-labelledby="typing-h">
+    <p class="eyebrow kicker">Typing into other apps</p>
+    <h2 id="typing-h">How the emoji picker and Mynah type on Plasma</h2>
+    <p class="lede">Plasma does not let ordinary programs pretend to be a keyboard, which is how typing works on
+    Omarchy. So on Plasma they do what a person would: the text goes onto the clipboard, paste is pressed through
+    Plasma's own remote-input permission (Ctrl+Shift+V in a terminal, Ctrl+V elsewhere), and your clipboard is put back
+    a moment later. Plasma asks once whether that is allowed; tick “Allow without asking next time” and it never asks
+    again. Anything that passes through the clipboard appears in Plasma's clipboard history, so dictated text does
+    too.</p>
+  </section>
+
+  <section aria-labelledby="stays-h">
+    <p class="eyebrow kicker">Not on Plasma</p>
+    <h2 id="stays-h">What stays on Omarchy, and why</h2>
+    <ul class="only">
+      <li><b>Clipboard shelf</b><span>Plasma&#x27;s own clipboard already pins items: star one in its history and it stays.</span></li>
+      <li><b>Idle dim</b><span>Plasma&#x27;s Power Management already dims the screen before it turns off.</span></li>
+      <li><b>Barber, Tile blueprints, Aerial, Tactile, Omalang</b><span>They reshape Hyprland and Omarchy&#x27;s bar themselves; on Plasma, System Settings and KWin do those jobs.</span></li>
+      <li><b>Omagram and PenguID</b><span>Later: Omagram&#x27;s window would have to be rewritten for Plasma, and face unlock needs Plasma&#x27;s lock screen and PAM work first.</span></li>
+    </ul>
+  </section>
+
+  <div class="pagefoot">
+    <a class="back" href="/#plugins"><span>&larr;</span> All plugins</a>
+    <span>Free and open source. <a href="https://donatello.to/DuduPhudu">Support its development</a>.</span>
+  </div>
+
+</main>
+
+<script>
+  document.querySelectorAll("[data-copy]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var label = button.textContent
+      var done = function (text) {
+        button.textContent = text
+        setTimeout(function () { button.textContent = label }, 1600)
+      }
+      if (!navigator.clipboard) return done("Copy failed")
+      navigator.clipboard.writeText(button.dataset.copy).then(
+        function () { done("Copied") }, function () { done("Copy failed") })
+    })
+  })
+</script>
+</body>
+</html>

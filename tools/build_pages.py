@@ -13,6 +13,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from plugins import PLUGINS, SITE  # noqa: E402
+import plasma  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -211,4 +212,6 @@ if __name__ == "__main__":
     today = datetime.date.today().isoformat()
     pages = write_pages()
     n = write_sitemap(today)
-    print(f"wrote {len(pages)} pages and {n} sitemap entries")
+    with_plasma = plasma.apply(ROOT)
+    plasma.write_page(ROOT)
+    print(f"wrote {len(pages)} pages and {n} sitemap entries; Plasma sections on {len(with_plasma)}: {', '.join(with_plasma)}")

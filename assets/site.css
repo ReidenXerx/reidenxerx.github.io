@@ -8,6 +8,7 @@
     --accent: #9A5600;
     --ok: #2D7A4B;
     --bad: #B42318;
+    --plasma: #2A6CA8;
     --tint: color-mix(in oklab, var(--accent) 10%, var(--surface));
     --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
     --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -25,6 +26,8 @@
       --accent: #F2B441;
       --ok: #5CC08A;
       --bad: #F0877D;
+    --plasma: #72B2EA;
+      --plasma: #72B2EA;
       color-scheme: dark;
     }
   }
@@ -185,6 +188,8 @@
   .badge.listed { color: var(--ok); }
   .badge.review { color: var(--muted); }
   .badge.new { color: var(--accent); }
+  .badge.testing, .badge.plasma { color: var(--plasma); }
+  .plasma-link { color: var(--plasma); }
   .actions { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-top: 4px; font-size: .9rem; }
   .copy { font: 500 12px/1 var(--mono); padding: 7px 10px; border-radius: 999px; border: 1px solid var(--rule); background: var(--chip); color: var(--ink); cursor: pointer; }
   .copy:hover { border-color: var(--accent); }
@@ -303,6 +308,8 @@
     overflow: hidden; background: var(--surface); line-height: 0;
   }
   .shot img { width: 100%; height: auto; display: block; }
+  .figure { margin: 0; }
+  .caption { margin: 10px 2px 0; color: var(--muted); font-size: .9rem; }
 
   .only { display: grid; gap: 22px; margin: 22px 0 0; padding: 0; list-style: none; }
   @media (min-width: 760px) { .only { grid-template-columns: 1fr 1fr; gap: 26px 40px; } }
