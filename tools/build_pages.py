@@ -82,7 +82,7 @@ def page(p: dict) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{esc(p['name'])} — Omarchy plugin · DuduPhudu</title>
+<title>{esc(p['name'])} — Linux app for Omarchy · DuduPhudu</title>
 <meta name="description" content="{esc(description)}">
 <link rel="canonical" href="{url}">
 <meta name="author" content="DuduPhudu">
@@ -110,11 +110,11 @@ def page(p: dict) -> str:
 <body>
 
 <header class="nav">
-  <a class="back" href="/#plugins"><span>&larr;</span> All plugins</a>
+  <a class="back" href="/#plugins"><span>&larr;</span> All apps</a>
   <a class="brand" href="/">Dudu<span class="two">Phudu</span></a>
   <nav class="nav-links" aria-label="Sections">
     <a href="/#flagships">Flagships</a>
-    <a href="/#plugins">Omarchy plugins</a>
+    <a href="/#plugins">Linux apps</a>
     <a href="{p['repo']}">GitHub</a>
     <a href="/#support">Support</a>
   </nav>
@@ -156,7 +156,7 @@ def page(p: dict) -> str:
   </section>
 
   <div class="pagefoot">
-    <a class="back" href="/#plugins"><span>&larr;</span> All plugins</a>
+    <a class="back" href="/#plugins"><span>&larr;</span> All apps</a>
     <span>Free and open source. <a href="https://donatello.to/DuduPhudu">Support its development</a>.</span>
   </div>
 

@@ -126,7 +126,7 @@ def write_page(root) -> None:
              + " ".join(PLASMA) + "; do git clone -q -b plasma " + SITE_REPO
              + "/omarchy-$w.git && (cd omarchy-$w && tools/build-plasma >/dev/null && "
              "kpackagetool6 -t Plasma/Applet -i dist/app.duduphudu.$w); done")
-    description = ("Nine of DuduPhudu's Omarchy plugins also run on KDE Plasma 6 as widgets: screen time, battery, "
+    description = ("Nine of DuduPhudu's Linux apps for Omarchy also run on KDE Plasma 6 as widgets: screen time, battery, "
                    "air raid alerts, the dGPU, Night Light, a status hub, emoji, dictation and a keyboard cleaner.")
     out = root / "plasma" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -155,11 +155,11 @@ def write_page(root) -> None:
 <body>
 
 <header class="nav">
-  <a class="back" href="/#plugins"><span>&larr;</span> All plugins</a>
+  <a class="back" href="/#plugins"><span>&larr;</span> All apps</a>
   <a class="brand" href="/">Dudu<span class="two">Phudu</span></a>
   <nav class="nav-links" aria-label="Sections">
     <a href="/#flagships">Flagships</a>
-    <a href="/#plugins">Omarchy plugins</a>
+    <a href="/#plugins">Linux apps</a>
     <a href="/#support">Support</a>
   </nav>
 </header>
@@ -169,7 +169,7 @@ def write_page(root) -> None:
   <div class="detail-head">
     <p class="eyebrow">KDE Plasma 6</p>
     <h1>On Plasma too<span class="badge testing">In testing</span></h1>
-    <p class="tagline">Nine of the Omarchy plugins, as Plasma widgets.</p>
+    <p class="tagline">Nine of the Linux apps, as Plasma widgets.</p>
     <p class="lede">The same work underneath: the same helpers, recorders and samplers, with a panel or tray widget in
     Plasma's own controls and colours on top. Where Plasma already does something well, they work with it instead of
     beside it: Dusk drives Plasma's Night Light, Reserve sits next to its battery widget. They are being tested on a
@@ -218,7 +218,7 @@ def write_page(root) -> None:
   </section>
 
   <div class="pagefoot">
-    <a class="back" href="/#plugins"><span>&larr;</span> All plugins</a>
+    <a class="back" href="/#plugins"><span>&larr;</span> All apps</a>
     <span>Free and open source. <a href="https://donatello.to/DuduPhudu">Support its development</a>.</span>
   </div>
 

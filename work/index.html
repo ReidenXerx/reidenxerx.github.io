@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vadim Lysenko · Software engineer</title>
+<meta name="description" content="Vadim Lysenko builds software end to end: a Vortex extension with 2,600+ tests, 17 Linux apps, AI-agent tooling, Linux driver work, and JavaScript, Vue and React support in GitNexus.">
+<link rel="canonical" href="https://duduphudu.app/work/">
+<meta name="author" content="Vadim Lysenko">
+<meta name="theme-color" content="#F2F3F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1215" media="(prefers-color-scheme: dark)">
+<meta property="og:site_name" content="DuduPhudu">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Vadim Lysenko · Software engineer">
+<meta property="og:description" content="Vadim Lysenko builds software end to end: a Vortex extension with 2,600+ tests, 17 Linux apps, AI-agent tooling, Linux driver work, and JavaScript, Vue and React support in GitNexus.">
+<meta property="og:url" content="https://duduphudu.app/work/">
+<meta property="og:image" content="https://duduphudu.app/assets/social/duduphudu.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "ProfilePage", "url": "https://duduphudu.app/work/",
+ "mainEntity": {"@type": "Person", "name": "Vadim Lysenko", "alternateName": "DuduPhudu", "jobTitle": "Software engineer",
+  "url": "https://duduphudu.app/work/", "sameAs": ["https://github.com/ReidenXerx", "https://www.linkedin.com/in/vadim-lysenko-06b03122a/"]}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  .cv { max-width: 1080px; margin-inline: auto; }
+
+  .cv-head { padding-block: 48px 8px; display: grid; gap: 28px; }
+  @media (min-width: 900px) { .cv-head { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: end; } }
+  .cv-head h1 { font-size: clamp(2.8rem, 7vw, 4.6rem); margin: 10px 0 14px; }
+  .cv-head .tagline { font: 600 clamp(1.15rem, 2.2vw, 1.4rem)/1.35 var(--display); margin: 0 0 14px; max-width: 34ch; text-wrap: balance; }
+  .cv-head .lede { color: var(--muted); max-width: 62ch; font-size: 1.05rem; }
+  .cv-head .aka { font: 13px/1.5 var(--mono); color: var(--muted); margin-top: 14px; }
+
+  .contact { display: grid; gap: 10px; align-content: end; }
+  .contact a {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding: 12px 16px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface);
+    color: var(--ink); text-decoration: none; font: 15px/1.4 var(--body);
+  }
+  .contact a span { font: 12px/1.4 var(--mono); color: var(--muted); }
+  .contact a:hover, .contact a:focus-visible { border-color: var(--accent); }
+  .contact a.primary { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .contact a.primary span { color: color-mix(in oklab, var(--ground) 70%, var(--ink)); }
+
+  .proof { list-style: none; padding: 0; margin: 40px 0 8px; display: grid; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .proof li { background: var(--surface); padding: 18px 20px 20px; }
+  .proof b { display: block; font: 650 2.1rem/1.05 var(--display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; color: var(--accent); }
+  .proof span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+
+  .cv h2 { font: 650 clamp(1.6rem, 3.4vw, 2.2rem)/1.1 var(--display); letter-spacing: -.02em; margin: 6px 0 22px; text-wrap: balance; }
+  .cv section { padding-block: 48px 8px; }
+
+  .case { display: grid; gap: 14px 40px; padding-block: 26px; border-top: 1px solid var(--rule); }
+  @media (min-width: 860px) { .case { grid-template-columns: 250px minmax(0, 1fr); } }
+  .case-meta .kind { font: 12px/1.5 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+  .case-meta h3 { font: 650 1.5rem/1.15 var(--display); letter-spacing: -.015em; margin: 0 0 12px; }
+  .chips { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips li { font: 12px/1 var(--mono); padding: 6px 8px; border-radius: 6px; background: var(--chip); color: var(--ink); }
+  .case-meta .links { display: flex; flex-direction: column; gap: 4px; font: 13px/1.5 var(--mono); }
+  .case-meta .links a { color: var(--accent); text-decoration: none; }
+  .case-meta .links a:hover { text-decoration: underline; }
+  .case-body .claim { font: 600 1.15rem/1.4 var(--display); margin: 0 0 14px; max-width: 60ch; }
+  .case-body dl { margin: 0; display: grid; gap: 12px; }
+  .case-body dt { font: 12px/1.5 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
+  .case-body dd { margin: 2px 0 0; max-width: 68ch; }
+  .case-body .result dd { font-weight: 500; }
+
+  .range { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .range-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+  .range th, .range td { text-align: left; vertical-align: top; padding: 14px 18px; border-top: 1px solid var(--rule); }
+  .range thead th { border-top: 0; font: 12px/1.5 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .range tbody th { font: 600 15px/1.4 var(--body); white-space: nowrap; }
+  .range td.tech { font: 13px/1.6 var(--mono); }
+  .range td.where { color: var(--muted); }
+
+  .ways { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .ways div { background: var(--surface); padding: 20px 22px; }
+  .ways h3 { font: 650 1.1rem/1.3 var(--display); margin: 0 0 8px; }
+  .ways p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .also { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+  .also li { display: grid; gap: 4px 24px; padding: 14px 0; border-top: 1px solid var(--rule); }
+  @media (min-width: 760px) { .also li { grid-template-columns: 180px minmax(0, 1fr) auto; align-items: baseline; } }
+  .also b { font: 600 1rem/1.4 var(--display); }
+  .also a { font: 13px/1.5 var(--mono); color: var(--accent); text-decoration: none; }
+  .also a:hover { text-decoration: underline; }
+  .also span { color: var(--muted); }
+
+  .closing { margin-top: 56px; padding: 32px; border-radius: 14px; background: var(--tint); border: 1px solid var(--rule);
+    display: grid; gap: 18px; }
+  @media (min-width: 860px) { .closing { grid-template-columns: minmax(0, 1fr) 340px; align-items: center; } }
+  .closing h2 { margin: 0 0 8px; }
+  .closing p { margin: 0; color: var(--muted); }
+
+  @media print {
+    .nav, .closing .contact { display: none; }
+    body { background: #fff; color: #000; padding: 0; }
+    .case, .ways div, .proof li { break-inside: avoid; }
+    .cv section { padding-block: 20px 0; }
+    a { color: inherit; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="back" href="/"><span>&larr;</span> Projects</a>
+  <a class="brand" href="/">Dudu<span class="two">Phudu</span></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#work">Selected work</a>
+    <a href="#range">Range</a>
+    <a href="#how">How I work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main class="cv">
+
+  <div class="cv-head">
+    <div>
+      <p class="eyebrow">Software engineer</p>
+      <h1>Vadim Lysenko</h1>
+      <p class="tagline">I build whole products: from the first idea to something people install, and I keep it working after.</p>
+      <p class="lede">Alongside my regular work I design, build, test and ship software of my own: a mod-collection
+      manager for Vortex proven on 1,900-mod setups, tooling for AI coding agents, seventeen Linux desktop apps on the
+      Omarchy marketplace, and Linux driver work for my own laptop. I also build open source: the JavaScript and Vue
+      support in GitNexus, a 48k-star code-intelligence engine, is mine, along with much of its React handling.</p>
+      <p class="aka">Known online as DuduPhudu · github.com/ReidenXerx</p>
+    </div>
+    <div class="contact" id="contact-top">
+      <a class="primary" href="mailto:hello@duduphudu.app">Email me <span>hello@duduphudu.app</span></a>
+      <a href="https://github.com/ReidenXerx">GitHub <span>ReidenXerx</span></a>
+      <a href="https://www.linkedin.com/in/vadim-lysenko-06b03122a/">LinkedIn <span>vadim-lysenko</span></a>
+    </div>
+  </div>
+
+  <ul class="proof" aria-label="At a glance">
+    <li><b>33k</b><span>lines of code merged into GitNexus (48k GitHub stars) across eleven pull requests</span></li>
+    <li><b>17</b><span>Linux apps listed on the Omarchy marketplace, 15 of them verified by its security review</span></li>
+    <li><b>2,600+</b><span>tests in Event Horizon, including a render of every screen</span></li>
+    <li><b>1,900</b><span>mods in the Skyrim profile Event Horizon is proven on</span></li>
+  </ul>
+
+  <section id="work" aria-labelledby="work-h">
+    <p class="eyebrow kicker">Selected work</p>
+    <h2 id="work-h">Five projects, and what each one took</h2>
+
+    <article class="case">
+      <div class="case-meta">
+        <p class="kind">Vortex extension · with Bluuuk</p>
+        <h3>Event Horizon</h3>
+        <ul class="chips"><li>TypeScript</li><li>React</li><li>Vitest</li><li>Vortex API</li></ul>
+        <div class="links">
+          <a href="https://www.nexusmods.com/site/mods/2235">Nexus Mods page</a>
+          <a href="https://github.com/ReidenXerx/Event-Horizon">Source on GitHub</a>
+        </div>
+      </div>
+      <div class="case-body">
+        <p class="claim">Mod collections that arrive the way the curator built them, and stay that way.</p>
+        <dl>
+          <div><dt>Problem</dt><dd>A Vortex collection is a list of mods. Installing one rarely reproduces the curator's
+          setup: file conflicts resolve differently, the load order drifts, and mods vanish from Nexus.</dd></div>
+          <div><dt>What I built</dt><dd>A package format that is a snapshot of a working setup, rebuilt and then proved: every
+          archive hashed against a manifest, the curator's load order pinned and watched, a Collection Doctor that explains
+          each problem with its repair, and an installer that follows a mod's whole requirement chain.</dd></div>
+          <div class="result"><dt>Result</dt><dd>Proven on a 1,900-mod Skyrim SE profile and a 950-mod Fallout 4 collection.
+          On a 1,753-mod collection, 17,159 of 17,161 contested files go to the curator's winner; the other two are files
+          the game never loads. Backed by 2,600+ tests.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-meta">
+        <p class="kind">Open source · core contributor</p>
+        <h3>GitNexus</h3>
+        <ul class="chips"><li>TypeScript</li><li>Tree-sitter</li><li>Static analysis</li><li>MCP</li></ul>
+        <div class="links">
+          <a href="https://github.com/abhigyanpatwari/GitNexus/pulls?q=is%3Apr+author%3AReidenXerx+is%3Amerged">My merged pull requests</a>
+        </div>
+      </div>
+      <div class="case-body">
+        <p class="claim">I taught a 48k-star code-intelligence engine to read the JavaScript world: about 33,000 lines across
+        eleven merged pull requests.</p>
+        <dl>
+          <div><dt>Context</dt><dd>GitNexus turns a repository into a graph of calls, routes and references that AI agents
+          query. When the graph is wrong, agents are told live code doesn't exist.</dd></div>
+          <div><dt>What I built</dt><dd>JavaScript support on GitNexus's new scope-based engine, including CommonJS
+          <code>require</code>, JSDoc types and class fields, then Vue single-file components on top of it. React in
+          TypeScript: calls through JSX, hooks and higher-order callbacks, and components wrapped in <code>forwardRef</code>
+          or <code>memo</code>. Server code too: NestJS routes, HTTP clients behind route tables, and Next.js build output
+          kept out of the graph.</dd></div>
+          <div class="result"><dt>Result</dt><dd>JavaScript and Vue run on code I wrote, and React projects get a far more
+          complete graph. All eleven pull requests were merged to the maintainers' review standard, in a codebase I didn't
+          start.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-meta">
+        <p class="kind">Linux kernel · hardware</p>
+        <h3>Four speakers on Linux</h3>
+        <ul class="chips"><li>C</li><li>Linux kernel</li><li>ACPI</li><li>DKMS</li><li>Bash</li><li>Python</li></ul>
+      </div>
+      <div class="case-body">
+        <p class="claim">My Alienware x16 R2 has four speaker amplifiers. Out of the box, Linux drove none of them.</p>
+        <dl>
+          <div><dt>Problem</dt><dd>The known workaround drove two amps, without their firmware, so the speakers ran unprotected
+          and thin. Nothing about the other two was documented anywhere.</dd></div>
+          <div><dt>What I did</dt><dd>Decoded Dell's Windows driver configuration to find all four amps and how they are wired.
+          Traced the missing firmware to an SPI clock left at 3 kHz, which the kernel already fixes for a sibling Dell
+          laptop. Wrote an ACPI table override for four amps, a kernel fixup and the clock quirk, and mapped Dell's own amp
+          tunings to the names Linux loads.</dd></div>
+          <div class="result"><dt>Result</dt><dd>All four amps running Dell's tuning. A DKMS package rebuilds the fix for
+          every kernel update from that kernel's exact, signature-checked sources, and falls back to two amps rather than
+          silence. Submitting it upstream is next.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-meta">
+        <p class="kind">Security · Linux app</p>
+        <h3>PenguID</h3>
+        <ul class="chips"><li>QML</li><li>Python</li><li>C</li><li>PAM</li><li>polkit</li></ul>
+        <div class="links"><a href="/omarchy-penguid/">Project page</a></div>
+      </div>
+      <div class="case-body">
+        <p class="claim">Face unlock for the lock screen, sudo and polkit, designed so a face is never the only key.</p>
+        <dl>
+          <div><dt>What I built</dt><dd>A lock screen that runs face recognition as its own PAM service beside the password and
+          fingerprint, on an infrared-only engine. Face can also approve sudo and polkit prompts.</dd></div>
+          <div class="result"><dt>The careful part</dt><dd>The password stays the authority: face pauses after five failures
+          and asks for the password again every 48 hours, and the screen shows exactly what face unlock is doing at each
+          moment.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-meta">
+        <p class="kind">Desktop apps · marketplace</p>
+        <h3>Seventeen Linux apps</h3>
+        <ul class="chips"><li>QML / Qt Quick</li><li>Python</li><li>D-Bus</li><li>PipeWire</li><li>systemd</li></ul>
+        <div class="links">
+          <a href="/#plugins">All the apps</a>
+          <a href="https://plugins.omarchy.org">Omarchy marketplace</a>
+        </div>
+      </div>
+      <div class="case-body">
+        <p class="claim">Linux desktop apps people install from a store, each through a security review.</p>
+        <dl>
+          <div><dt>What they are</dt><dd>A status hub, air-raid alerts, a Telegram client, a window overview, a dictation
+          front end, screen time, battery history and more, each with its own bar widget, panel and settings.</dd></div>
+          <div class="result"><dt>Result</dt><dd>Seventeen listed, fifteen verified. The marketplace's review sets a high
+          bar: absolute tool paths, safe temporary files, bounded reads, deadlines on every process, no secrets in arguments.
+          One app went through five rounds before it was listed.</dd></div>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <section id="range" aria-labelledby="range-h">
+    <p class="eyebrow kicker">Range</p>
+    <h2 id="range-h">What I work in, and where you can see it</h2>
+    <div class="range-wrap">
+      <table class="range">
+        <thead><tr><th scope="col">Area</th><th scope="col">Technologies</th><th scope="col">Where it shows</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Web and apps</th><td class="tech">TypeScript, React, QML / Qt Quick, Swift</td>
+            <td class="where">Event Horizon, the Linux apps, the macOS apps for whiz and Mynah</td></tr>
+          <tr><th scope="row">AI engineering</th><td class="tech">Claude Code, Codex, MCP, agent hooks and skills, context engineering</td>
+            <td class="where">bearing, the GitNexus contributions, my daily workflow</td></tr>
+          <tr><th scope="row">Tooling and services</th><td class="tech">Python, Node.js, CLIs, npm packages, daemons</td>
+            <td class="where">bearing, whiz, Mynah, the Linux apps' background helpers</td></tr>
+          <tr><th scope="row">Linux and systems</th><td class="tech">C, Bash, kernel modules, ACPI, PAM, systemd, PipeWire, DKMS</td>
+            <td class="where">The speaker driver work, PenguID, the Linux apps</td></tr>
+          <tr><th scope="row">Code analysis</th><td class="tech">Static analysis, call graphs, scope resolution</td>
+            <td class="where">GitNexus contributions</td></tr>
+          <tr><th scope="row">Quality</th><td class="tech">Vitest, large test suites, security review, measuring before and after</td>
+            <td class="where">Event Horizon's 2,600+ tests, the marketplace reviews</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="how" aria-labelledby="how-h">
+    <p class="eyebrow kicker">How I work</p>
+    <h2 id="how-h">Four habits that show up in all of it</h2>
+    <div class="ways">
+      <div><h3>Prove it, don't assume it</h3><p>Measure before and after, and test what users actually see. Event Horizon
+      renders every one of its screens in its test suite.</p></div>
+      <div><h3>Go to the source of truth</h3><p>When documentation runs out, read what the vendor or the upstream code
+      actually does. The four-amp fix came out of Dell's own driver files.</p></div>
+      <div><h3>Fail safe</h3><p>Plan for the day something breaks. When the speaker rebuild fails, you get two amps and a
+      clear message, never silence.</p></div>
+      <div><h3>AI-native, human-owned</h3><p>I build with AI agents every day (Claude Code, Codex) and engineer the
+      context around them: bearing gives agents hooks, skills and guardrails, and GitNexus serves them a code graph over
+      MCP. I write the spec, review every diff and own what ships.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="also-h">
+    <p class="eyebrow kicker">Also built</p>
+    <h2 id="also-h">Smaller projects</h2>
+    <ul class="also">
+      <li><b>bearing</b><span>Keeps AI coding agents on course: eleven modules for Claude Code, Zed and Codex, on npm.</span><a href="/bearing/">bearing</a></li>
+      <li><b>whiz</b><span>From a recording to a transcript that knows who spoke, illustrated with frames, in one command.</span><a href="/whiz/">whiz</a></li>
+      <li><b>Mynah</b><span>Dictation that types wherever you already are, on macOS and Linux.</span><a href="/mynah/">Mynah</a></li>
+    </ul>
+  </section>
+
+  <div class="closing" id="contact">
+    <div>
+      <h2>Let's talk</h2>
+      <p>I'm open to full-time and contract roles across web, tooling and Linux work. My CV, with my work history, is a
+      message away.</p>
+    </div>
+    <div class="contact">
+      <a class="primary" href="mailto:hello@duduphudu.app">Email me <span>hello@duduphudu.app</span></a>
+      <a href="https://github.com/ReidenXerx">GitHub <span>ReidenXerx</span></a>
+      <a href="https://www.linkedin.com/in/vadim-lysenko-06b03122a/">LinkedIn <span>vadim-lysenko</span></a>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
