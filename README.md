@@ -6,6 +6,3 @@ It is plain HTML with no build step. GitHub Pages serves this repository at the 
 
 Plugin preview images come from each plugin's own repository and its Omarchy marketplace listing.
 
-## Support
-
-Like these projects? Support their development: https://donatello.to/DuduPhudu

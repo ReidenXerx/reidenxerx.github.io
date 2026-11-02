@@ -160,7 +160,6 @@ def write_page(root) -> None:
   <nav class="nav-links" aria-label="Sections">
     <a href="/#flagships">Flagships</a>
     <a href="/#plugins">Linux apps</a>
-    <a href="/#support">Support</a>
   </nav>
 </header>
 
@@ -219,7 +218,7 @@ def write_page(root) -> None:
 
   <div class="pagefoot">
     <a class="back" href="/#plugins"><span>&larr;</span> All apps</a>
-    <span>Free and open source. <a href="https://donatello.to/DuduPhudu">Support its development</a>.</span>
+    <span>Free and open source.</span>
   </div>
 
 </main>
